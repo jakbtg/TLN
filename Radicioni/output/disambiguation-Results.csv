@@ -1,77 +1,73 @@
-SUICIDE_ATTACK
-	 - SUICIDE,	 Found: suicide.n.01,	 Gold: suicide.n.01,	 ✅
-	 - VICTIM,	 Found: victim.n.01,	 Gold: victim.n.01,	 ✅
-	 - WEAPON,	 Found: weapon.n.01,	 Gold: weapon.n.01,	 ✅
-	 - ASSAILANT,	 Found: attacker.n.01,	 Gold: attacker.n.01,	 ✅
-	 - MANNER,	 Found: manner.n.01,	 Gold: manner.n.01,	 ✅
-	 - MEANS,	 Found: means.n.01,	 Gold: means.n.01,	 ✅
-	 - PLACE,	 Found: topographic_point.n.01,	 Gold: topographic_point.n.01,	 ✅
-	 - PURPOSE,	 Found: purpose.n.01,	 Gold: purpose.n.01,	 ✅
-	 - TIME,	 Found: time.n.01,	 Gold: fourth_dimension.n.01,	 ❌
-	 - SOURCE,	 Found: beginning.n.04,	 Gold: beginning.n.04,	 ✅
-	 - DEPICTIVE,	 Found: delineative.s.01,	 Gold: delineative.s.01,	 ✅
-	 - RE-ENCODING,	 Found: None,	 Gold: None,	 ✅
-	 - RESULT,	 Found: consequence.n.01,	 Gold: consequence.n.01,	 ✅
-	 - CONTAINING_EVENT,	 Found: None,	 Gold: None,	 ✅
-	 - EXPLANATION,	 Found: explanation.n.01,	 Gold: explanation.n.01,	 ✅
-	 - PARTICULAR_ITERATION,	 Found: None,	 Gold: None,	 ✅
-	 - CIRCUMSTANCES,	 Found: circumstance.n.01,	 Gold: circumstance.n.01,	 ✅
-	 - PATH,	 Found: path.n.03,	 Gold: path.n.03,	 ✅
-	 - SUICIDE ATTACK.N,	 Found: suicide.n.01,	 Gold: suicide_bombing.n.01,	 ❌
-	 - SUICIDE BOMBING.N,	 Found: suicide.n.02,	 Gold: suicide_bombing.n.01,	 ❌
-	 - KAMIKAZE [ATTACK].N,	 Found: kamikaze.n.01,	 Gold: kamikaze.n.02,	 ❌
-	 - SUICIDE BOMBER.N,	 Found: suicide.n.01,	 Gold: suicide_bomber.n.01,	 ❌
-	 - SUICIDE ATTACKER.N,	 Found: suicide.n.02,	 Gold: suicide_bomber.n.01,	 ❌
-	 - KAMIKAZE [PERSON].N,	 Found: kamikaze.n.01,	 Gold: kamikaze.n.02,	 ❌
-BOARD_VEHICLE
-	 - VEHICLE,	 Found: vehicle.n.01,	 Gold: vehicle.n.01,	 ✅
-	 - TRAVELLER,	 Found: traveler.n.01,	 Gold: traveler.n.01,	 ✅
-	 - SOURCE,	 Found: generator.n.03,	 Gold: beinning.n.04,	 ❌
-	 - MANNER,	 Found: manner.n.01,	 Gold: manner.n.01,	 ✅
-	 - PATH,	 Found: way.n.05,	 Gold: path.n.03,	 ❌
-	 - DURATION_OF_FINAL_STATE,	 Found: None,	 Gold: duration.n.01,	 ❌
-	 - DEPICTIVE,	 Found: delineative.s.01,	 Gold: delineative.s.01,	 ✅
-	 - TIME,	 Found: time.n.01,	 Gold: fourth_dimension.n.01,	 ❌
-	 - COTHEME,	 Found: None,	 Gold: None,	 ✅
-	 - PURPOSE,	 Found: purpose.n.01,	 Gold: purpose.n.01,	 ✅
-	 - PLACE,	 Found: put.v.01,	 Gold: topographic_point.n.01,	 ❌
-	 - CIRCUMSTANCES,	 Found: circumstance.n.01,	 Gold: circumstance.n.01,	 ✅
-	 - BOARD.V,	 Found: board.v.01,	 Gold: board.v.01,	 ✅
-	 - GET.V,	 Found: get.v.01,	 Gold: board.v.01,	 ❌
-	 - EMBARK.V,	 Found: embark.v.01,	 Gold: embark.v.01,	 ✅
-	 - EMPLANE.V,	 Found: emplane.v.01,	 Gold: emplane.v.01,	 ✅
-	 - ENTRAIN.V,	 Found: entrain.v.01,	 Gold: entrain.v.01,	 ✅
-	 - MOUNT.V,	 Found: mount.n.04,	 Gold: hop_on.v.01,	 ❌
-	 - HOP.V,	 Found: hop.n.01,	 Gold: hop.v.03,	 ❌
-	 - EMBARKATION.N,	 Found: boarding.n.01,	 Gold: boarding.n.01,	 ✅
-	 - EMBARKMENT.N,	 Found: boarding.n.01,	 Gold: boarding.n.01,	 ✅
-	 - EMBUS.V,	 Found: None,	 Gold: None,	 ✅
-SIMPLE_NAME
-	 - NAME,	 Found: name.n.01,	 Gold: name.n.01,	 ✅
-	 - TERM,	 Found: term.n.01,	 Gold: term.n.01,	 ✅
-	 - ENTITY,	 Found: entity.n.01,	 Gold: entity.n.01,	 ✅
-	 - SPEAKER,	 Found: speaker.n.01,	 Gold: speaker.n.01,	 ✅
-	 - TERM.N,	 Found: term.n.01,	 Gold: term.n.01,	 ✅
-	 - WORD.N,	 Found: word.n.01,	 Gold: word.n.01,	 ✅
-ACCESS_SCENARIO
-	 - ACCESS,	 Found: access.n.03,	 Gold: access.n.06,	 ❌
-	 - THEME,	 Found: subject.n.01,	 Gold: subject.n.01,	 ✅
-	 - USEFUL_LOCATION,	 Found: None,	 Gold: location.n.01,	 ❌
-	 - BARRIER,	 Found: barrier.n.01,	 Gold: barrier.n.01,	 ✅
-ECLIPSE
-	 - ECLIPSE,	 Found: eclipse.n.01,	 Gold: eclipse.n.01,	 ✅
-	 - OBSTRUCTION,	 Found: obstruction.n.01,	 Gold: obstruction.n.01,	 ✅
-	 - ECLIPSED,	 Found: overshadow.v.01,	 Gold: eclipse.v.02,	 ❌
-	 - VANTAGE_POINT,	 Found: vantage_point.n.01,	 Gold: vantage_point.n.01,	 ✅
-	 - DEGREE,	 Found: degree.n.02,	 Gold: degree.n.01,	 ❌
-	 - SUBREGION,	 Found: None,	 Gold: region.n.01,	 ❌
-	 - HIDE.V,	 Found: hide.v.01,	 Gold: hide.v.01,	 ✅
-	 - ECLIPSE.V,	 Found: eclipse.n.01,	 Gold: eclipse.v.02,	 ❌
-	 - MASK.V,	 Found: mask.n.01,	 Gold: mask.v.05,	 ❌
-	 - COVER.V,	 Found: cover.v.01,	 Gold: cover.v.01,	 ✅
-	 - OBSCURE.V,	 Found: obscure.v.01,	 Gold: obscure.v.01,	 ✅
-	 - SCREEN.V,	 Found: screen.n.04,	 Gold: screen.v.05,	 ❌
-	 - VEIL.V,	 Found: veil.v.01,	 Gold: veil.v.01,	 ✅
-	 - HIDDEN.A,	 Found: hide.v.01,	 Gold: hide.v.01,	 ✅
-	 - BLOT OUT.V,	 Found: smudge.n.02,	 Gold: obscure.v.05,	 ❌
-	 - OBSCURED.A,	 Found: obscure.v.01,	 Gold: obscure.n.01,	 ❌
+Frame,Word,Found,Expected,Correct
+Suicide_attack,Suicide,suicide.n.01,suicide.n.01,✅
+Suicide_attack,Victim,victim.n.01,victim.n.01,✅
+Suicide_attack,Weapon,weapon.n.01,weapon.n.01,✅
+Suicide_attack,Assailant,attacker.n.01,attacker.n.01,✅
+Suicide_attack,Manner,manner.n.01,manner.n.01,✅
+Suicide_attack,Means,means.n.01,means.n.01,✅
+Suicide_attack,Place,topographic_point.n.01,topographic_point.n.01,✅
+Suicide_attack,Purpose,purpose.n.01,purpose.n.01,✅
+Suicide_attack,Time,time.n.01,fourth_dimension.n.01,❌
+Suicide_attack,Source,beginning.n.04,beginning.n.04,✅
+Suicide_attack,Depictive,delineative.s.01,delineative.s.01,✅
+Suicide_attack,Re-encoding,None,,❌
+Suicide_attack,Result,consequence.n.01,consequence.n.01,✅
+Suicide_attack,Containing_event,None,,❌
+Suicide_attack,Explanation,explanation.n.01,explanation.n.01,✅
+Suicide_attack,Particular_iteration,None,,❌
+Suicide_attack,Circumstances,circumstance.n.01,circumstance.n.01,✅
+Suicide_attack,Path,path.n.03,path.n.03,✅
+Suicide_attack,suicide attack.n,suicide.n.01,suicide_bombing.n.01,❌
+Suicide_attack,suicide bombing.n,suicide.n.02,suicide_bombing.n.01,❌
+Suicide_attack,kamikaze [attack].n,kamikaze.n.01,kamikaze.n.02,❌
+Suicide_attack,suicide bomber.n,suicide.n.01,suicide_bomber.n.01,❌
+Suicide_attack,suicide attacker.n,suicide.n.02,suicide_bomber.n.01,❌
+Suicide_attack,kamikaze [person].n,kamikaze.n.01,kamikaze.n.02,❌
+Board_vehicle,Vehicle,vehicle.n.01,vehicle.n.01,✅
+Board_vehicle,Traveller,traveler.n.01,traveler.n.01,✅
+Board_vehicle,Source,generator.n.03,beinning.n.04,❌
+Board_vehicle,Manner,manner.n.01,manner.n.01,✅
+Board_vehicle,Path,way.n.05,path.n.03,❌
+Board_vehicle,Duration_of_final_state,None,duration.n.01,❌
+Board_vehicle,Depictive,delineative.s.01,delineative.s.01,✅
+Board_vehicle,Time,time.n.01,fourth_dimension.n.01,❌
+Board_vehicle,Cotheme,None,,❌
+Board_vehicle,Purpose,purpose.n.01,purpose.n.01,✅
+Board_vehicle,Place,put.v.01,topographic_point.n.01,❌
+Board_vehicle,Circumstances,circumstance.n.01,circumstance.n.01,✅
+Board_vehicle,board.v,board.v.01,board.v.01,✅
+Board_vehicle,get.v,get.v.01,board.v.01,❌
+Board_vehicle,embark.v,embark.v.01,embark.v.01,✅
+Board_vehicle,emplane.v,emplane.v.01,emplane.v.01,✅
+Board_vehicle,entrain.v,entrain.v.01,entrain.v.01,✅
+Board_vehicle,mount.v,mount.n.04,hop_on.v.01,❌
+Board_vehicle,hop.v,hop.n.01,hop.v.03,❌
+Board_vehicle,embarkation.n,boarding.n.01,boarding.n.01,✅
+Board_vehicle,embarkment.n,boarding.n.01,boarding.n.01,✅
+Board_vehicle,embus.v,None,,❌
+Simple_name,Name,name.n.01,name.n.01,✅
+Simple_name,Term,term.n.01,term.n.01,✅
+Simple_name,Entity,entity.n.01,entity.n.01,✅
+Simple_name,Speaker,speaker.n.01,speaker.n.01,✅
+Simple_name,term.n,term.n.01,term.n.01,✅
+Simple_name,word.n,word.n.01,word.n.01,✅
+Access_scenario,Access,access.n.03,access.n.06,❌
+Access_scenario,Theme,subject.n.01,subject.n.01,✅
+Access_scenario,Useful_location,None,location.n.01,❌
+Access_scenario,Barrier,barrier.n.01,barrier.n.01,✅
+Eclipse,Eclipse,eclipse.n.01,eclipse.n.01,✅
+Eclipse,Obstruction,obstruction.n.01,obstruction.n.01,✅
+Eclipse,Eclipsed,overshadow.v.01,eclipse.v.02,❌
+Eclipse,Vantage_point,vantage_point.n.01,vantage_point.n.01,✅
+Eclipse,Degree,degree.n.02,degree.n.01,❌
+Eclipse,Subregion,None,region.n.01,❌
+Eclipse,hide.v,hide.v.01,hide.v.01,✅
+Eclipse,eclipse.v,eclipse.n.01,eclipse.v.02,❌
+Eclipse,mask.v,mask.n.01,mask.v.05,❌
+Eclipse,cover.v,cover.v.01,cover.v.01,✅
+Eclipse,obscure.v,obscure.v.01,obscure.v.01,✅
+Eclipse,screen.v,screen.n.04,screen.v.05,❌
+Eclipse,veil.v,veil.v.01,veil.v.01,✅
+Eclipse,hidden.a,hide.v.01,hide.v.01,✅
+Eclipse,blot out.v,smudge.n.02,obscure.v.05,❌
+Eclipse,obscured.a,obscure.v.01,obscure.n.01,❌
