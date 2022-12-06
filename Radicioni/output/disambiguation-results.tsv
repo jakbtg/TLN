@@ -1,0 +1,73 @@
+Frame	Word	Found	Expected	Correct
+Suicide_attack	Suicide	suicide.n.01	suicide.n.01	✅
+Suicide_attack	Victim	victim.n.01	victim.n.01	✅
+Suicide_attack	Weapon	weapon.n.01	weapon.n.01	✅
+Suicide_attack	Assailant	attacker.n.01	attacker.n.01	✅
+Suicide_attack	Manner	manner.n.01	manner.n.01	✅
+Suicide_attack	Means	means.n.01	means.n.01	✅
+Suicide_attack	Place	topographic_point.n.01	topographic_point.n.01	✅
+Suicide_attack	Purpose	purpose.n.01	purpose.n.01	✅
+Suicide_attack	Time	time.n.01	fourth_dimension.n.01	❌
+Suicide_attack	Source	beginning.n.04	beginning.n.04	✅
+Suicide_attack	Depictive	delineative.s.01	delineative.s.01	✅
+Suicide_attack	Re-encoding	None	None	✅
+Suicide_attack	Result	consequence.n.01	consequence.n.01	✅
+Suicide_attack	Containing_event	None	None	✅
+Suicide_attack	Explanation	explanation.n.01	explanation.n.01	✅
+Suicide_attack	Particular_iteration	None	None	✅
+Suicide_attack	Circumstances	circumstance.n.01	circumstance.n.01	✅
+Suicide_attack	Path	path.n.03	path.n.03	✅
+Suicide_attack	suicide attack.n	suicide.n.01	suicide_bombing.n.01	❌
+Suicide_attack	suicide bombing.n	suicide.n.02	suicide_bombing.n.01	❌
+Suicide_attack	kamikaze [attack].n	kamikaze.n.01	kamikaze.n.02	❌
+Suicide_attack	suicide bomber.n	suicide.n.01	suicide_bomber.n.01	❌
+Suicide_attack	suicide attacker.n	suicide.n.02	suicide_bomber.n.01	❌
+Suicide_attack	kamikaze [person].n	kamikaze.n.01	kamikaze.n.02	❌
+Board_vehicle	Vehicle	vehicle.n.01	vehicle.n.01	✅
+Board_vehicle	Traveller	traveler.n.01	traveler.n.01	✅
+Board_vehicle	Source	generator.n.03	beinning.n.04	❌
+Board_vehicle	Manner	manner.n.01	manner.n.01	✅
+Board_vehicle	Path	way.n.05	path.n.03	❌
+Board_vehicle	Duration_of_final_state	None	duration.n.01	❌
+Board_vehicle	Depictive	delineative.s.01	delineative.s.01	✅
+Board_vehicle	Time	time.n.01	fourth_dimension.n.01	❌
+Board_vehicle	Cotheme	None	None	✅
+Board_vehicle	Purpose	purpose.n.01	purpose.n.01	✅
+Board_vehicle	Place	put.v.01	topographic_point.n.01	❌
+Board_vehicle	Circumstances	circumstance.n.01	circumstance.n.01	✅
+Board_vehicle	board.v	board.v.01	board.v.01	✅
+Board_vehicle	get.v	get.v.01	board.v.01	❌
+Board_vehicle	embark.v	embark.v.01	embark.v.01	✅
+Board_vehicle	emplane.v	emplane.v.01	emplane.v.01	✅
+Board_vehicle	entrain.v	entrain.v.01	entrain.v.01	✅
+Board_vehicle	mount.v	mount.n.04	hop_on.v.01	❌
+Board_vehicle	hop.v	hop.n.01	hop.v.03	❌
+Board_vehicle	embarkation.n	boarding.n.01	boarding.n.01	✅
+Board_vehicle	embarkment.n	boarding.n.01	boarding.n.01	✅
+Board_vehicle	embus.v	None	None	✅
+Simple_name	Name	name.n.01	name.n.01	✅
+Simple_name	Term	term.n.01	term.n.01	✅
+Simple_name	Entity	entity.n.01	entity.n.01	✅
+Simple_name	Speaker	speaker.n.01	speaker.n.01	✅
+Simple_name	term.n	term.n.01	term.n.01	✅
+Simple_name	word.n	word.n.01	word.n.01	✅
+Access_scenario	Access	access.n.03	access.n.06	❌
+Access_scenario	Theme	subject.n.01	subject.n.01	✅
+Access_scenario	Useful_location	None	location.n.01	❌
+Access_scenario	Barrier	barrier.n.01	barrier.n.01	✅
+Eclipse	Eclipse	eclipse.n.01	eclipse.n.01	✅
+Eclipse	Obstruction	obstruction.n.01	obstruction.n.01	✅
+Eclipse	Eclipsed	overshadow.v.01	eclipse.v.02	❌
+Eclipse	Vantage_point	vantage_point.n.01	vantage_point.n.01	✅
+Eclipse	Degree	degree.n.02	degree.n.01	❌
+Eclipse	Subregion	None	region.n.01	❌
+Eclipse	hide.v	hide.v.01	hide.v.01	✅
+Eclipse	eclipse.v	eclipse.n.01	eclipse.v.02	❌
+Eclipse	mask.v	mask.n.01	mask.v.05	❌
+Eclipse	cover.v	cover.v.01	cover.v.01	✅
+Eclipse	obscure.v	obscure.v.01	obscure.v.01	✅
+Eclipse	screen.v	screen.n.04	screen.v.05	❌
+Eclipse	veil.v	veil.v.01	veil.v.01	✅
+Eclipse	hidden.a	hide.v.01	hide.v.01	✅
+Eclipse	blot out.v	smudge.n.02	obscure.v.05	❌
+Eclipse	obscured.a	obscure.v.01	obscure.n.01	❌
