@@ -1,0 +1,99 @@
+// <Lattice object of 8 atoms 26 concepts 4 coatoms at 0x7fabc568c550>
+digraph Lattice {
+	node [label="" shape=circle style=filled width=.25]
+	edge [dir=none labeldistance=1.5 minlen=2]
+	c0
+	c1
+	c1 -> c1 [color=transparent headlabel=bicycle labelangle=270]
+	c1 -> c1 [color=transparent labelangle=90 taillabel=uncomfortable]
+	c1 -> c0
+	c2
+	c2 -> c2 [color=transparent headlabel=scooter labelangle=270]
+	c2 -> c0
+	c3
+	c3 -> c3 [color=transparent headlabel=car labelangle=270]
+	c3 -> c0
+	c4
+	c4 -> c4 [color=transparent headlabel=supercar labelangle=270]
+	c4 -> c0
+	c5
+	c5 -> c5 [color=transparent headlabel=bus labelangle=270]
+	c5 -> c0
+	c6
+	c6 -> c6 [color=transparent headlabel=train labelangle=270]
+	c6 -> c0
+	c7
+	c7 -> c7 [color=transparent headlabel=airplane labelangle=270]
+	c7 -> c0
+	c8
+	c8 -> c8 [color=transparent headlabel=ship labelangle=270]
+	c8 -> c0
+	c9
+	c9 -> c1
+	c9 -> c2
+	c10
+	c10 -> c1
+	c10 -> c5
+	c11
+	c11 -> c2
+	c11 -> c5
+	c12
+	c12 -> c3
+	c12 -> c6
+	c13
+	c13 -> c13 [color=transparent labelangle=90 taillabel=expensive]
+	c13 -> c4
+	c13 -> c7
+	c14
+	c14 -> c5
+	c14 -> c8
+	c15
+	c15 -> c6
+	c15 -> c7
+	c16
+	c16 -> c6
+	c16 -> c8
+	c17
+	c17 -> c17 [color=transparent labelangle=90 taillabel=cheap]
+	c17 -> c9
+	c17 -> c10
+	c17 -> c11
+	c18
+	c18 -> c18 [color=transparent labelangle=90 taillabel=slow]
+	c18 -> c10
+	c18 -> c14
+	c19
+	c19 -> c2
+	c19 -> c3
+	c19 -> c4
+	c20
+	c20 -> c20 [color=transparent labelangle=90 taillabel=medium]
+	c20 -> c12
+	c20 -> c16
+	c21
+	c21 -> c21 [color=transparent labelangle=90 taillabel=small]
+	c21 -> c9
+	c21 -> c19
+	c22
+	c22 -> c22 [color=transparent labelangle=90 taillabel=big]
+	c22 -> c14
+	c22 -> c15
+	c22 -> c16
+	c23
+	c23 -> c23 [color=transparent labelangle=90 taillabel=fast]
+	c23 -> c12
+	c23 -> c13
+	c23 -> c15
+	c23 -> c19
+	c24
+	c24 -> c24 [color=transparent labelangle=90 taillabel=comfortable]
+	c24 -> c11
+	c24 -> c20
+	c24 -> c22
+	c24 -> c23
+	c25
+	c25 -> c17
+	c25 -> c18
+	c25 -> c21
+	c25 -> c24
+}
