@@ -1,0 +1,9 @@
+transports, cheap, medium, expensive, fast, slow, big, small, comfortable, uncomfortable
+bicycle, X, , , , X, , X, , X
+scooter, X, , , X, , , X, X, 
+car, , X, , X, , , X, X,
+supercar, , , X, X, , , X, X,
+bus, X, , , , X, X, , X,
+train, , X, , X, , X, , X,
+airplane, , , X, X, , X, , X,
+ship, , X, , , X, X, , X,
