@@ -1,0 +1,12 @@
+fruit
+dog
+vegetable
+color
+cat
+flower
+emotion
+sport
+car
+job
+city
+tree
