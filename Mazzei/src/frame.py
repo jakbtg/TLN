@@ -27,20 +27,22 @@ class Frame:
             self.is_completed = True
         return self.is_completed
 
-    def add_ingredient(self, ingredient):
-        if ingredient in self.target_potion.get_ingredients():
-            self.current_ingredients.add(ingredient)
-        else:
-            self.wrong_ingredients += 1
+    def add_ingredient(self, ingredients):
+        ingredients = set(ingredients)
+        for ingredient in ingredients:
+            if ingredient in self.target_potion.get_ingredients():
+                self.current_ingredients.add(ingredient)
+            else:
+                self.wrong_ingredients += 1
 
 
 if __name__ == "__main__":
     frame = Frame(potion.Potion("Invisibility", ["Eye of Newt", "Dragon's Blood"]))
     print(frame)
-    frame.add_ingredient("Eye of Newt")
+    frame.add_ingredient(["Eye of Newt", "Dragon's Blood"])
     print(frame)
-    frame.add_ingredient("Dragon's Blood")
+    frame.add_ingredient(["Eye of Newt"])
     print(frame)
-    frame.add_ingredient("Wrong ingredient")
+    frame.add_ingredient(["Wrong ingredient"])
     print(frame)
     print(frame.check_if_complete())
