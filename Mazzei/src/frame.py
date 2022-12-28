@@ -37,8 +37,6 @@ class Frame:
 if __name__ == "__main__":
     frame = Frame(potion.Potion("Invisibility", ["Eye of Newt", "Dragon's Blood"]))
     print(frame)
-    # print(frame.get_target_potion())
-    # print(frame.is_completed())
     frame.add_ingredient("Eye of Newt")
     print(frame)
     frame.add_ingredient("Dragon's Blood")
