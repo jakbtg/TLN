@@ -1,14 +1,16 @@
+# Potions taken from https://harrypotter.fandom.com/wiki/List_of_potions
+
 import potion
 
 polyjuice_potion = potion.Potion(
     "Polyjuice Potion",
     [
-        "Lacewing Flies",
+        "Lacewing flies",
         "Leeches",
-        "Powdered Bicorn horn",
+        "Powdered bicorn horn",
         "Knotgrass",
         "Fluxweed",
-        "Shredded Boomslang Skin",
+        "Shredded boomslang skin",
         "Hair",
     ],
 )
@@ -23,6 +25,3 @@ felix_felicis = potion.Potion(
         "Powdered common rue",
     ],
 )
-
-print(polyjuice_potion)
-print(felix_felicis)
