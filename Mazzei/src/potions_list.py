@@ -25,3 +25,7 @@ felix_felicis = potion.Potion(
         "Powdered common rue",
     ],
 )
+healing_potion = potion.Potion(
+    "Healing Potion",
+    ["Wormwood", "Bubotuber pus", "Dittany", "Dragon liver", "Unicorn tailhair"],
+)
