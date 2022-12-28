@@ -22,11 +22,15 @@ class Frame:
     def get_wrong_ingredients(self):
         return self.wrong_ingredients
 
+    # Check if the current ingredients are the same as the target potion ingredients
     def check_if_complete(self):
         if self.current_ingredients == set(self.target_potion.get_ingredients()):
             self.is_completed = True
         return self.is_completed
 
+    # Add a list of ingredients to the current ingredients:
+    # - If the ingredient is in the target potion, add it to the current ingredients
+    # - If the ingredient is not in the target potion, increase the number of wrong ingredients
     def add_ingredient(self, ingredients):
         ingredients = set(ingredients)
         for ingredient in ingredients:
