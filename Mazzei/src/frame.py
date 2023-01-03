@@ -2,7 +2,7 @@ import potion
 
 
 class Frame:
-    def __init__(self, target_potion: potion.Potion, current_ingredients=None):
+    def __init__(self, target_potion, current_ingredients=None):
         if current_ingredients is None:
             current_ingredients = []
         self.target_potion = target_potion
