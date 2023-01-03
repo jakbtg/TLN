@@ -10,18 +10,22 @@ class Analysis:
         self.doc = self.nlp(self.text)
         self.positivity = self.check_positivity()
 
+    # Get the dependencies of the text in the form:
+    # {token: (dependency, part of speech, head)}
     def get_dependecies(self):
         dict = {}
         for token in self.doc:
             dict[token.text] = token.dep_, token.pos_, token.head.text
         return dict
 
+    # Check if the text contains an ingredient
     def check_for_ingredient(self):
         for token in self.doc:
             if token.text in ingredients_list:
                 return token.text
         return None
 
+    # Check if the text is positive or negative
     def check_positivity(self):
         self.positivity = True
         for token in self.doc:
