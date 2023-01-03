@@ -8,6 +8,12 @@ class Analysis:
         self.nlp = spacy.load("en_core_web_md")
         self.doc = self.nlp(self.text)
 
+    def get_dependecy_tree(self):
+        dict = {}
+        for token in self.doc:
+            dict[token.text] = token.dep_, token.pos_, token.head.text
+        return dict
+
 
 if __name__ == "__main__":
     analysis = Analysis("This is a test")
@@ -17,5 +23,4 @@ if __name__ == "__main__":
     print(type(analysis.doc))
     print(analysis.doc[0])
     print(type(analysis.doc[0]))
-    print(analysis.doc.to_json())
-    displacy.serve(analysis.doc, style="dep", port=8080)
+    print(analysis.get_dependecy_tree())
