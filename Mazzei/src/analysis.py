@@ -1,5 +1,5 @@
 import spacy
-from spacy import displacy
+from potions_list import ingredients_list
 
 
 class Analysis:
@@ -14,9 +14,15 @@ class Analysis:
             dict[token.text] = token.dep_, token.pos_, token.head.text
         return dict
 
+    def check_for_ingredient(self):
+        for token in self.doc:
+            if token.text in ingredients_list:
+                return token.text
+        return None
+
 
 if __name__ == "__main__":
-    analysis = Analysis("This is a test")
+    analysis = Analysis("There is knotgrass in the polyjuice potion.")
     print(analysis.text)
     print(type(analysis.text))
     print(analysis.doc)
@@ -24,3 +30,5 @@ if __name__ == "__main__":
     print(analysis.doc[0])
     print(type(analysis.doc[0]))
     print(analysis.get_dependecy_tree())
+    print(analysis.check_for_ingredient())
+    # displacy.serve(analysis.doc, style="dep")

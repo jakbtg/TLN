@@ -14,6 +14,7 @@ polyjuice_potion = potion.Potion(
         "Hair",
     ],
 )
+
 felix_felicis = potion.Potion(
     "Felix Felicis",
     [
@@ -25,7 +26,29 @@ felix_felicis = potion.Potion(
         "Powdered common rue",
     ],
 )
+
 healing_potion = potion.Potion(
     "Healing Potion",
     ["Wormwood", "Bubotuber pus", "Dittany", "Dragon liver", "Unicorn tailhair"],
 )
+
+ingredients_list = [
+    "lacewing flies",
+    "leeches",
+    "powdered bicorn horn",
+    "knotgrass",
+    "fluxweed",
+    "shredded boomslang skin",
+    "hair",
+    "ashwinder egg",
+    "squill bulb",
+    "murtlap tentacles",
+    "tincture of thyme",
+    "occamy eggshell",
+    "powdered common rue",
+    "wormwood",
+    "bubotuber pus",
+    "dittany",
+    "dragon liver",
+    "unicorn tailhair",
+]
