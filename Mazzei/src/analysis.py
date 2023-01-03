@@ -31,10 +31,10 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is knotgrass in the polyjuice potion.")
+    analysis = Analysis("There is banana in the polyjuice potion.")
     print(analysis.text)
-    pprint(analysis.doc.to_json())
+    # pprint(analysis.doc.to_json())
     print(analysis.get_dependecies())
-    print(analysis.check_for_ingredient())
-    print(analysis.check_positivity())
+    print(f"Found ingredient: {analysis.check_for_ingredient()}")
+    print(f"Positivity: {analysis.positivity}")
     # displacy.serve(analysis.doc, style="dep")
