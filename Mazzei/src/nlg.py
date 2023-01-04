@@ -7,10 +7,15 @@ class NLG:
             text = f.read()
         self.model = markovify.Text(text)
 
+    def ask_question(self):
+        question = self.model.make_sentence(tries=200)
+
+        return question
+
 
 if __name__ == "__main__":
-    nlg = NLG("../corpus/questions.txt")
-    print(nlg.model.make_sentence())
+    nlg = NLG("Mazzei/corpus/questions.txt")
+    print(nlg.ask_question())
 
 
 # from simplenlg import *
