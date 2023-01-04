@@ -7,12 +7,15 @@ class NLG:
         with open(text_path) as f:
             text = f.read()
         self.model = markovify.Text(text)
+        self.model.compile(inplace=True)
 
     def ask_question(self):
         question = self.model.make_sentence(tries=100)
         text = Analysis(question)
-        while text.number_of_ingredients() == 0:
+        # Make sure the question contains only one ingredient
+        while text.number_of_ingredients() >= 2 or text.number_of_ingredients() == 0:
             question = self.model.make_sentence(tries=100)
+            text = Analysis(question)
         return question
 
 
