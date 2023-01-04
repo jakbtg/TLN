@@ -20,15 +20,17 @@ class Analysis:
 
     # Check if the text contains an ingredient
     def check_for_ingredient(self):
-        found = None
+        found = []
         ingredients_words_list = [ingredient.split() for ingredient in ingredients_list]
         for token in self.doc:
             for ingredient_words in ingredients_words_list:
                 if token.text == ingredient_words[0]:
                     if len(ingredient_words) == 1:
-                        found = ingredient_words[0]
+                        found.append(token.text)
                     else:
-                        found = self.scan_neighbour_tokens(token, ingredient_words)
+                        found.append(
+                            self.scan_neighbour_tokens(token, ingredient_words)
+                        )
         return found
 
     # Scan the neighbour tokens to find the whole ingredient
@@ -49,12 +51,17 @@ class Analysis:
                 self.positivity = False
         return self.positivity
 
+    # Count number of ingredients in the text
+    def number_of_ingredients(self):
+        return len(self.check_for_ingredient())
+
 
 if __name__ == "__main__":
-    analysis = Analysis("There is unicorn tailhair in the polyjuice potion.")
+    analysis = Analysis("There is banana in the polyjuice potion.")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
     # pprint(analysis.get_dependecies())
     print(f"Found ingredient: {analysis.check_for_ingredient()}")
     print(f"Positivity: {analysis.positivity}")
+    print(f"Number of ingredients: {analysis.number_of_ingredients()}")
     # displacy.serve(analysis.doc, style="dep")
