@@ -9,10 +9,10 @@ class NLG:
         self.model = markovify.Text(text)
 
     def ask_question(self):
-        question = self.model.make_sentence(tries=200)
+        question = self.model.make_sentence(tries=100)
         text = Analysis(question)
         while text.number_of_ingredients() == 0:
-            question = self.model.make_sentence(tries=200)
+            question = self.model.make_sentence(tries=100)
         return question
 
 
