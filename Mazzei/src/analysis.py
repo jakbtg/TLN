@@ -20,9 +20,16 @@ class Analysis:
 
     # Check if the text contains an ingredient
     def check_for_ingredient(self):
+        # works only if the ingredient is a single word
         for token in self.doc:
             if token.text in ingredients_list:
                 return token.text
+        # works if the ingredient is a multi-word phrase
+        for token in self.doc:
+            if token.head.text in ingredients_list:
+                ingredient = token.text + " " + token.head.text
+                if ingredient in ingredients_list:
+                    return ingredient
         return None
 
     # Check if the text is positive or negative
@@ -35,10 +42,10 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is banana in the polyjuice potion.")
+    analysis = Analysis("There is bubotuber pus in the polyjuice potion.")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
-    print(analysis.get_dependecies())
+    pprint(analysis.get_dependecies())
     print(f"Found ingredient: {analysis.check_for_ingredient()}")
     print(f"Positivity: {analysis.positivity}")
     # displacy.serve(analysis.doc, style="dep")
