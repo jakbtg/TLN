@@ -27,11 +27,20 @@ class NLG:
             test = Analysis(question)
         return question
 
+    def answer_question(self):
+        # print("Generating answer...")
+        # print(f"Current corpus: {self.text}")
+        answer = self.model.make_sentence(tries=100)
+        return answer
+
 
 if __name__ == "__main__":
-    questions_generator = NLG("questions")
+    # questions_generator = NLG("questions")
+    # for i in range(10):
+    #     print(questions_generator.ask_question())
+    answers_generator = NLG("answers")
     for i in range(10):
-        print(questions_generator.ask_question())
+        print(answers_generator.answer_question())
 
 
 # from simplenlg import *
