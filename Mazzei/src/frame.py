@@ -29,6 +29,10 @@ class Frame:
             self.is_completed = True
         return self.is_completed
 
+    # Increase the number of wrong ingredients
+    def add_wrong_ingredient(self):
+        self.wrong_ingredients += 1
+
     # Add a list of ingredients to the current ingredients
     def add_ingredient(self, ingredients):
         ingredients = set(ingredients)
