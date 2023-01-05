@@ -1,4 +1,5 @@
 import potion
+from potions_list import *
 
 
 class Frame:
@@ -28,22 +29,29 @@ class Frame:
             self.is_completed = True
         return self.is_completed
 
-    # Add a list of ingredients to the current ingredients:
-    # - If the ingredient is in the target potion, add it to the current ingredients
-    # - If the ingredient is not in the target potion, increase the number of wrong ingredients
+    # Add a list of ingredients to the current ingredients
     def add_ingredient(self, ingredients):
         ingredients = set(ingredients)
         for ingredient in ingredients:
-            if ingredient in self.target_potion.get_ingredients():
-                self.current_ingredients.add(ingredient)
-            else:
-                self.wrong_ingredients += 1
+            self.check_casefold_and_add(ingredient)
+
+    # Check if the ingredient is in the target potion ingredients ignoring the case
+    # - If the ingredient is in the target potion, add it to the current ingredients
+    # - If the ingredient is not in the target potion, increase the number of wrong ingredients
+    def check_casefold_and_add(self, ingredient):
+        found = False
+        for target_ingredient in self.target_potion.get_ingredients():
+            if ingredient.casefold() == target_ingredient.casefold():
+                self.current_ingredients.add(ingredient.lower())
+                found = True
+        if not found:
+            self.wrong_ingredients += 1
 
 
 if __name__ == "__main__":
-    frame = Frame(potion.Potion("Invisibility", ["Eye of Newt", "Dragon's Blood"]))
+    frame = Frame(polyjuice_potion)
     print(frame)
-    frame.add_ingredient(["Eye of Newt", "Dragon's Blood"])
+    frame.add_ingredient(["Lacewing flies", "leeches"])
     print(frame)
     frame.add_ingredient(["Eye of Newt"])
     print(frame)
