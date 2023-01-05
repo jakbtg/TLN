@@ -10,6 +10,8 @@ class Potion:
         return self.name
 
     def get_ingredients(self):
+        for i in range(len(self.ingredients)):
+            self.ingredients[i] = self.ingredients[i].lower()
         return self.ingredients
 
 
