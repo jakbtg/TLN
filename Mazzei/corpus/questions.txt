@@ -1,13 +1,11 @@
 Do you think Lacewing flies are in the potion?
 What about the leeches? Are they in the potion?
 Is there powdered bicorn horn in the potion?
-If I say that the Knotgrass is in the potion, would that be a lie?
-Can you say more about the potion? Which are the other ingredients?
+If I say that the Knotgrass is in the potion would that be a lie?
 Talking about the fluxweed, is it in the potion?
 Now I want to know if the shredded boomslang skin is in the potion. What will you say?
 Is there a hair in the potion?
-Are there any other ingredients in the potion?
-What do you think about the ashwinder egg, is it in the potion?
+What do you think about the ashwinder egg?
 Do I need to put a squill bulb in the potion?
 Might there be murtlap tentacles in the potion?
 Now I ask you about the tincture of thyme, What do you tell me? Is it in the potion?
@@ -18,3 +16,10 @@ Would it be correct to say that I need bubotuber pus to make this potion?
 Would Dittany possibly be in the potion?
 What about the dragon liver, is it in the potion?
 The unicorn tailhair is in the potion isn’t it?
+Should I put Lacewing flies in the potion?
+Can I put the leeches in the potion?
+Do you believe that there is powdered bicorn horn in the potion?
+Can I make the potion with the Knotgrass?
+Is the fluxweed in the potion?
+Might there be shredded boomslang skin in the potion?
+Is there a chance that there is a hair in the potion?
