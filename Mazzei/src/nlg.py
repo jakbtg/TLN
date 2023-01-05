@@ -13,8 +13,11 @@ class NLG:
         if corpus == "questions":
             with open("Mazzei/corpus/questions.txt") as f:
                 text = f.read()
-        elif corpus == "answers":
-            with open("Mazzei/corpus/answers.txt") as f:
+        elif corpus == "positive answers":
+            with open("Mazzei/corpus/positive_answers.txt") as f:
+                text = f.read()
+        elif corpus == "negative answers":
+            with open("Mazzei/corpus/negative_answers.txt") as f:
                 text = f.read()
         return text
 
@@ -25,6 +28,8 @@ class NLG:
         while test.number_of_ingredients() >= 2 or test.number_of_ingredients() == 0:
             question = self.model.make_sentence(tries=100)
             test = Analysis(question)
+        if question is None:
+            self.generate_question()
         return question
 
     def generate_answer(self):
@@ -36,9 +41,12 @@ if __name__ == "__main__":
     # questions_generator = NLG("questions")
     # for i in range(10):
     #     print(questions_generator.generate_question())
-    answers_generator = NLG("answers")
+    # pos_answers_generator = NLG("positive answers")
+    # for i in range(10):
+    #     print(pos_answers_generator.generate_answer())
+    neg_answers_generator = NLG("negative answers")
     for i in range(10):
-        print(answers_generator.generate_answer())
+        print(neg_answers_generator.generate_answer())
 
 
 # from simplenlg import *
