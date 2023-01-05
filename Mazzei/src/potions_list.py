@@ -52,3 +52,5 @@ ingredients_list = [
     "dragon liver",
     "unicorn tailhair",
 ]
+
+potions = [polyjuice_potion, felix_felicis, healing_potion]
