@@ -30,6 +30,7 @@ class Analysis:
                         found.append(
                             self.scan_neighbour_tokens(token, ingredient_words)
                         )
+        found = [x for x in found if x is not None]
         return found
 
     # Scan the neighbour tokens to find the whole ingredient
@@ -39,8 +40,6 @@ class Analysis:
             if token.nbor(i).text == ingredient_words[i]:
                 if i == len(ingredient_words) - 1:
                     return " ".join(ingredient_words)
-            else:
-                return None
 
     # Check if the text is positive or negative
     def check_positivity(self):
@@ -56,7 +55,7 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is not knotgrass in the polyjuice potion.")
+    analysis = Analysis("There is not powdered bicorn horn in the polyjuice potion.")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
     # pprint(analysis.get_dependecies())
