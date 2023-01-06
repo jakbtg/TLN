@@ -12,7 +12,7 @@ class Frame:
         self.is_completed = False
 
     def __str__(self):
-        return f"{self.target_potion} \n Current ingredients: {', '.join(self.current_ingredients)}"  # \n Wrong ingredients: {self.wrong_ingredients}"
+        return f"{self.target_potion} \n\tCurrent ingredients: {', '.join(self.current_ingredients)} \n\tWrong ingredients: {self.wrong_ingredients}"
 
     def get_target_potion(self):
         return self.target_potion
@@ -57,6 +57,7 @@ class Frame:
                 found = True
         if not found:
             self.wrong_ingredients += 1
+            print(f"Wrong ingredient: {ingredient}")
 
 
 if __name__ == "__main__":
