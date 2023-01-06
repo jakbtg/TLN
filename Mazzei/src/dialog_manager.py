@@ -41,7 +41,7 @@ class DialogManager:
             return self.check_not_repeated_question()
         checked_question = analysis.Analysis(question)
         if checked_question.check_for_ingredient() in self.memory:
-            self.check_not_repeated_question()
+            return self.check_not_repeated_question()
         else:
             self.memory.append(checked_question.check_for_ingredient())
             return question
