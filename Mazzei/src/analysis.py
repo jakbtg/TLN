@@ -8,7 +8,6 @@ class Analysis:
         self.text = text.lower()
         self.nlp = spacy.load("en_core_web_md")
         self.doc = self.nlp(self.text)
-        self.positivity = self.check_positivity()
 
     # Get the dependencies of the text in the form:
     # {token: (dependency, part of speech, head)}
@@ -57,11 +56,11 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is banana in the polyjuice potion.")
+    analysis = Analysis("There is not knotgrass in the polyjuice potion.")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
     # pprint(analysis.get_dependecies())
     print(f"Found ingredient: {analysis.check_for_ingredient()}")
-    print(f"Positivity: {analysis.positivity}")
+    print(f"Positivity: {analysis.check_positivity()}")
     print(f"Number of ingredients: {analysis.number_of_ingredients()}")
     # displacy.serve(analysis.doc, style="dep")
