@@ -19,15 +19,17 @@ class Analysis:
 
     # Check if the text contains an ingredient
     def check_for_ingredient(self):
-        found = ""
+        found = []
         ingredients_words_list = [ingredient.split() for ingredient in ingredients_list]
         for token in self.doc:
             for ingredient_words in ingredients_words_list:
                 if token.text == ingredient_words[0]:
                     if len(ingredient_words) == 1:
-                        found = token.text
+                        found.append(token.text)
                     else:
-                        found = self.scan_neighbour_tokens(token, ingredient_words)
+                        found.append(
+                            self.scan_neighbour_tokens(token, ingredient_words)
+                        )
         return found
 
     # Scan the neighbour tokens to find the whole ingredient
