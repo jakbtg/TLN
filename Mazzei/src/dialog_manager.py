@@ -23,16 +23,11 @@ class DialogManager:
 
     def interview(self):
         while not self.frame.check_if_complete():
-            # for i in range(4):
             question = self.check_not_repeated_question()
             print(question)
             print(f"Memory: {self.memory}")
             print(f"Frame: {self.frame}")
             user_answer = input()
-            # checked_answer = analysis.Analysis(user_answer)
-            # if checked_answer.number_of_ingredients() == 1:
-            #     self.frame.add_ingredient(checked_answer.check_for_ingredient())
-            # print(self.pos_answer_generator.generate_answer())
             self.check_user_answer(
                 user_answer, self.check_if_contains_ingredient(question)
             )
@@ -42,7 +37,8 @@ class DialogManager:
     def check_not_repeated_question(self):
         question = self.question_generator.generate_question()
         if question is None:
-            self.check_not_repeated_question()
+            print("IT WAS NONE")
+            return self.check_not_repeated_question()
         checked_question = analysis.Analysis(question)
         if checked_question.check_for_ingredient() in self.memory:
             self.check_not_repeated_question()

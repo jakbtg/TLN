@@ -29,7 +29,7 @@ class NLG:
             question = self.model.make_sentence(tries=100)
             test = Analysis(question)
         if question is None:
-            self.generate_question()
+            return self.generate_question()
         return question
 
     def generate_answer(self):
@@ -39,7 +39,7 @@ class NLG:
 
 if __name__ == "__main__":
     questions_generator = NLG("questions")
-    for i in range(10):
+    for i in range(20):
         print(questions_generator.generate_question())
     # pos_answers_generator = NLG("positive answers")
     # for i in range(10):
