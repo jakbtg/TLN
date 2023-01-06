@@ -23,15 +23,31 @@ class DialogManager:
 
     def interview(self):
         while not self.frame.check_if_complete():
-            question = self.check_not_repeated_question()
-            print(question)
             print(f"Memory: {self.memory}")
             print(f"Frame: {self.frame}")
+            print(f"Wrong answers: {self.wrong_answers}\n")
+            question, n = self.choose_question()
+            print(question + "\n")
             user_answer = input()
-            self.check_user_answer(
-                user_answer, self.check_if_contains_ingredient(question)
-            )
+            if n == 1:
+                self.check_user_answer(
+                    user_answer, self.check_if_contains_ingredient(question)
+                )
+            else:
+                self.check_other_user_answer(user_answer)
+            print("\n")
         return f"Congratulations! You have completed the {self.potion.get_name()}!"
+
+    # Choose random question
+    def choose_question(self):
+        rand = random.randint(0, 100)
+        n = 0
+        if rand < 30:
+            n = 1
+            return self.check_not_repeated_question(), n
+        else:
+            n = 2
+            return "Can you tell me an ingredient of the potion?", n
 
     # Check if ingredient of the question is already in the memory
     def check_not_repeated_question(self):
@@ -41,9 +57,10 @@ class DialogManager:
             return self.check_not_repeated_question()
         checked_question = analysis.Analysis(question)
         if checked_question.check_for_ingredient() in self.memory:
+            print("IT WAS IN MEMORY")
             return self.check_not_repeated_question()
         else:
-            self.memory.append(checked_question.check_for_ingredient())
+            self.memory.append(checked_question.check_for_ingredient()[0])
             return question
 
     # Check if the question contains an ingredient of the target potion
@@ -70,6 +87,20 @@ class DialogManager:
                 print(self.neg_answer_generator.generate_answer())
             elif user_answer == "no":
                 print(self.pos_answer_generator.generate_answer())
+
+    # Check other user answer
+    def check_other_user_answer(self, user_answer):
+        checked_answer = analysis.Analysis(user_answer)
+        ingredient = checked_answer.check_for_ingredient()[0]
+        if ingredient in self.target_ingredients:
+            print(f"Ingredient {ingredient} is in the potion!")
+            self.frame.add_ingredient(ingredient)
+            self.memory.append(ingredient)
+            print(self.pos_answer_generator.generate_answer())
+        else:
+            self.wrong_answers += 1
+            self.memory.append(ingredient)
+            print(self.neg_answer_generator.generate_answer())
 
 
 if __name__ == "__main__":
