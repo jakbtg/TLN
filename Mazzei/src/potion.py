@@ -4,7 +4,7 @@ class Potion:
         self.ingredients = ingredients
 
     def __str__(self):
-        return f'{self.name}\n Ingredients: {", ".join(self.ingredients)}'
+        return f'{self.name}\n\tIngredients: {", ".join(self.ingredients)}'
 
     def get_name(self):
         return self.name
