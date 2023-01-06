@@ -12,10 +12,17 @@ class Frame:
         self.is_completed = False
 
     def __str__(self):
-        return f"{self.target_potion} \n Current ingredients: {', '.join(self.current_ingredients)} \n Wrong ingredients: {self.wrong_ingredients}"
+        return f"{self.target_potion} \n Current ingredients: {', '.join(self.current_ingredients)}"  # \n Wrong ingredients: {self.wrong_ingredients}"
 
     def get_target_potion(self):
         return self.target_potion
+
+    def get_target_ingredients(self):
+        ingredients = self.get_target_potion().get_ingredients()
+        result = []
+        for ingredient in ingredients:
+            result.append(ingredient.lower())
+        return result
 
     def get_current_ingredients(self):
         return self.current_ingredients
@@ -25,7 +32,7 @@ class Frame:
 
     # Check if the current ingredients are the same as the target potion ingredients
     def check_if_complete(self):
-        if self.current_ingredients == set(self.target_potion.get_ingredients()):
+        if self.current_ingredients == set(self.get_target_ingredients()):
             self.is_completed = True
         return self.is_completed
 
@@ -61,4 +68,15 @@ if __name__ == "__main__":
     print(frame)
     frame.add_ingredient(["Wrong ingredient"])
     print(frame)
+    frame.add_ingredient(
+        [
+            "powdered bicorn horn",
+            "knotgrass",
+            "Fluxweed",
+            "Shredded Boomslang skin",
+            "hair",
+        ]
+    )
+    print(frame)
     print(frame.check_if_complete())
+    # print(frame.get_target_ingredients())
