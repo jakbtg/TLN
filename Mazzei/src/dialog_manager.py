@@ -53,7 +53,8 @@ class DialogManager:
     # Check if the question contains an ingredient of the target potion
     def check_if_contains_ingredient(self, question):
         checked_question = analysis.Analysis(question)
-        if checked_question.check_for_ingredient() in self.target_ingredients:
+        ingredient = checked_question.check_for_ingredient()[0]
+        if ingredient in self.target_ingredients:
             return True
         else:
             return False
