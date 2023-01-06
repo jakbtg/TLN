@@ -38,15 +38,15 @@ class NLG:
 
 
 if __name__ == "__main__":
-    # questions_generator = NLG("questions")
-    # for i in range(10):
-    #     print(questions_generator.generate_question())
+    questions_generator = NLG("questions")
+    for i in range(10):
+        print(questions_generator.generate_question())
     # pos_answers_generator = NLG("positive answers")
     # for i in range(10):
     #     print(pos_answers_generator.generate_answer())
-    neg_answers_generator = NLG("negative answers")
-    for i in range(10):
-        print(neg_answers_generator.generate_answer())
+    # neg_answers_generator = NLG("negative answers")
+    # for i in range(10):
+    #     print(neg_answers_generator.generate_answer())
 
 
 # from simplenlg import *
