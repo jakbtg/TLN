@@ -40,16 +40,10 @@ class Frame:
     def add_wrong_ingredient(self):
         self.wrong_ingredients += 1
 
-    # Add a list of ingredients to the current ingredients
-    def add_ingredient(self, ingredients):
-        ingredients = set(ingredients)
-        for ingredient in ingredients:
-            self.check_casefold_and_add(ingredient)
-
-    # Check if the ingredient is in the target potion ingredients ignoring the case
+    # Add an ingredient to the current ingredients
     # - If the ingredient is in the target potion, add it to the current ingredients
     # - If the ingredient is not in the target potion, increase the number of wrong ingredients
-    def check_casefold_and_add(self, ingredient):
+    def add_ingredient(self, ingredient):
         found = False
         for target_ingredient in self.target_potion.get_ingredients():
             if ingredient.casefold() == target_ingredient.casefold():
@@ -63,21 +57,19 @@ class Frame:
 if __name__ == "__main__":
     frame = Frame(polyjuice_potion)
     print(frame)
-    frame.add_ingredient(["Lacewing flies", "leeches"])
+    frame.add_ingredient("Lacewing flies")
     print(frame)
-    frame.add_ingredient(["Eye of Newt"])
+    frame.add_ingredient("Eye of Newt")
     print(frame)
-    frame.add_ingredient(["Wrong ingredient"])
+    frame.add_ingredient("Wrong ingredient")
     print(frame)
-    frame.add_ingredient(
-        [
-            "powdered bicorn horn",
-            "knotgrass",
-            "Fluxweed",
-            "Shredded Boomslang skin",
-            "hair",
-        ]
-    )
+    frame.add_ingredient("leeches")
+    frame.add_ingredient("knotgrass")
+    frame.add_ingredient("bubotuber pus")
+    frame.add_ingredient("fluxweed")
+    frame.add_ingredient("powdered bicorn horn")
+    frame.add_ingredient("shredded boomslang skin")
+    frame.add_ingredient("hair")
     print(frame)
     print(frame.check_if_complete())
     # print(frame.get_target_ingredients())
