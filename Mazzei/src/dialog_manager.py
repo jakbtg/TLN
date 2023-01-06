@@ -92,6 +92,10 @@ class DialogManager:
     def check_other_user_answer(self, user_answer):
         checked_answer = analysis.Analysis(user_answer)
         ingredients = checked_answer.check_for_ingredient()
+        if len(ingredients) == 0:
+            self.wrong_answers += 1
+            print(self.neg_answer_generator.generate_answer())
+            return
         if ingredients[0] in self.target_ingredients:
             self.frame.add_ingredient(ingredients)
             self.memory.append(ingredients)

@@ -55,11 +55,12 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is not powdered bicorn horn in the polyjuice potion.")
+    analysis = Analysis("There is pippo in the polyjuice potion.")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
     # pprint(analysis.get_dependecies())
     print(f"Found ingredient: {analysis.check_for_ingredient()}")
     print(f"Positivity: {analysis.check_positivity()}")
     print(f"Number of ingredients: {analysis.number_of_ingredients()}")
+    print(len(analysis.check_for_ingredient()))
     # displacy.serve(analysis.doc, style="dep")
