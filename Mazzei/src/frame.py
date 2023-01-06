@@ -8,11 +8,10 @@ class Frame:
             current_ingredients = []
         self.target_potion = target_potion
         self.current_ingredients = set(current_ingredients)
-        self.wrong_ingredients = 0
         self.is_completed = False
 
     def __str__(self):
-        return f"{self.target_potion} \n\tCurrent ingredients: {', '.join(self.current_ingredients)} \n\tWrong ingredients: {self.wrong_ingredients}"
+        return f"{self.target_potion} \n\tCurrent ingredients: {', '.join(self.current_ingredients)}"
 
     def get_target_potion(self):
         return self.target_potion
@@ -27,18 +26,11 @@ class Frame:
     def get_current_ingredients(self):
         return self.current_ingredients
 
-    def get_wrong_ingredients(self):
-        return self.wrong_ingredients
-
     # Check if the current ingredients are the same as the target potion ingredients
     def check_if_complete(self):
         if self.current_ingredients == set(self.get_target_ingredients()):
             self.is_completed = True
         return self.is_completed
-
-    # Increase the number of wrong ingredients
-    def add_wrong_ingredient(self):
-        self.wrong_ingredients += 1
 
     # Add a list of ingredients to the current ingredients
     def add_ingredient(self, ingredients):
@@ -56,7 +48,6 @@ class Frame:
                 self.current_ingredients.add(ingredient.lower())
                 found = True
         if not found:
-            self.wrong_ingredients += 1
             print(f"Wrong ingredient: {ingredient}")
 
 
