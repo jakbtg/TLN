@@ -34,6 +34,8 @@ class NLG:
 
     def generate_answer(self):
         answer = self.model.make_sentence(tries=100)
+        if answer is None:
+            return self.generate_answer()
         return answer
 
 
