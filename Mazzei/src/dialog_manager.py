@@ -60,7 +60,7 @@ class DialogManager:
             print("IT WAS IN MEMORY")
             return self.check_not_repeated_question()
         else:
-            self.memory.append(checked_question.check_for_ingredient()[0])
+            self.memory.append(checked_question.check_for_ingredient())
             return question
 
     # Check if the question contains an ingredient of the target potion
@@ -91,15 +91,14 @@ class DialogManager:
     # Check other user answer
     def check_other_user_answer(self, user_answer):
         checked_answer = analysis.Analysis(user_answer)
-        ingredient = checked_answer.check_for_ingredient()[0]
-        if ingredient in self.target_ingredients:
-            print(f"Ingredient {ingredient} is in the potion!")
-            self.frame.add_ingredient(ingredient)
-            self.memory.append(ingredient)
+        ingredients = checked_answer.check_for_ingredient()
+        if ingredients[0] in self.target_ingredients:
+            self.frame.add_ingredient(ingredients)
+            self.memory.append(ingredients)
             print(self.pos_answer_generator.generate_answer())
         else:
             self.wrong_answers += 1
-            self.memory.append(ingredient)
+            self.memory.append(ingredients)
             print(self.neg_answer_generator.generate_answer())
 
 
