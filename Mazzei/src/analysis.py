@@ -26,6 +26,9 @@ class Analysis:
                 if token.text == ingredient_words[0]:
                     if len(ingredient_words) == 1:
                         found.append(token.text)
+                    # if it is the last token of the text and the ingredient is made of more than one word, it must be wrong
+                    elif token.i == len(self.doc) - 1 and len(ingredient_words) > 1:
+                        found.append(None)
                     else:
                         found.append(
                             self.scan_neighbour_tokens(token, ingredient_words)
@@ -37,6 +40,10 @@ class Analysis:
     # Needed because some ingredients are made of more than one word
     def scan_neighbour_tokens(self, token, ingredient_words):
         for i in range(1, len(ingredient_words)):
+            # if it is the last token of the text and the ingredient is made of more than one word, it must be wrong
+            if token.i + i == len(self.doc) and len(ingredient_words) > 1:
+                return None
+            # if the neighbour token is not the same as the ingredient word, it must be wrong
             if token.nbor(i).text != ingredient_words[i]:
                 return None
         return " ".join(ingredient_words)
@@ -55,7 +62,7 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is powdered common rue in the polyjuice potion.")
+    analysis = Analysis("There is powdered")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
     # pprint(analysis.get_dependecies())
