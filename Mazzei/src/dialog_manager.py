@@ -77,18 +77,20 @@ class DialogManager:
 
     # Check user answer
     def check_user_answer(self, user_answer, is_target_ingredient):
+        analyzed_answer = analysis.Analysis(user_answer)
+        is_positive_answer = analyzed_answer.check_positivity()
         if is_target_ingredient:
-            if user_answer == "yes":
+            if is_positive_answer:
                 self.frame.add_ingredient(self.memory[-1])
                 print(self.pos_answer_generator.generate_answer())
-            elif user_answer == "no":
+            else:
                 self.wrong_answers += 1
                 print(self.neg_answer_generator.generate_answer())
         else:
-            if user_answer == "yes":
+            if is_positive_answer:
                 self.wrong_answers += 1
                 print(self.neg_answer_generator.generate_answer())
-            elif user_answer == "no":
+            else:
                 print(self.pos_answer_generator.generate_answer())
 
     # Check other user answer
