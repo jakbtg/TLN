@@ -37,9 +37,9 @@ class Analysis:
     # Needed because some ingredients are made of more than one word
     def scan_neighbour_tokens(self, token, ingredient_words):
         for i in range(1, len(ingredient_words)):
-            if token.nbor(i).text == ingredient_words[i]:
-                if i == len(ingredient_words) - 1:
-                    return " ".join(ingredient_words)
+            if token.nbor(i).text != ingredient_words[i]:
+                return None
+        return " ".join(ingredient_words)
 
     # Check if the text is positive or negative
     def check_positivity(self):
@@ -55,12 +55,11 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is pippo in the polyjuice potion.")
+    analysis = Analysis("There is powdered common rue in the polyjuice potion.")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
     # pprint(analysis.get_dependecies())
     print(f"Found ingredient: {analysis.check_for_ingredient()}")
     print(f"Positivity: {analysis.check_positivity()}")
     print(f"Number of ingredients: {analysis.number_of_ingredients()}")
-    print(len(analysis.check_for_ingredient()))
     # displacy.serve(analysis.doc, style="dep")
