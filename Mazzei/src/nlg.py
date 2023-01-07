@@ -1,5 +1,18 @@
 import markovify
 from analysis import Analysis
+import spacy
+
+
+nlp = spacy.load("en_core_web_md")
+
+
+class POSifiedText(markovify.Text):
+    def word_split(self, sentence):
+        return ["::".join((word.orth_, word.pos_)) for word in nlp(sentence)]
+
+    def word_join(self, words):
+        sentence = " ".join(word.split("::")[0] for word in words)
+        return sentence
 
 
 class NLG:
@@ -41,14 +54,14 @@ class NLG:
 
 if __name__ == "__main__":
     questions_generator = NLG("questions")
+    for i in range(20):
+        print(questions_generator.generate_question())
+    # pos_answers_generator = NLG("positive answers")
     # for i in range(20):
-    #     print(questions_generator.generate_question())
-    pos_answers_generator = NLG("positive answers")
-    for i in range(20):
-        print(pos_answers_generator.generate_answer())
-    neg_answers_generator = NLG("negative answers")
-    for i in range(20):
-        print(neg_answers_generator.generate_answer())
+    #     print(pos_answers_generator.generate_answer())
+    # neg_answers_generator = NLG("negative answers")
+    # for i in range(20):
+    #     print(neg_answers_generator.generate_answer())
 
 
 # from simplenlg import *
