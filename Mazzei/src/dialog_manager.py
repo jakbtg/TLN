@@ -55,9 +55,9 @@ class DialogManager:
     # Check if ingredient of the question is already in the memory
     def check_not_repeated_question(self):
         question = self.question_generator.generate_question()
-        if question is None:
-            print("IT WAS NONE")
-            return self.check_not_repeated_question()
+        # if question is None:
+        #     print("IT WAS NONE")
+        #     return self.check_not_repeated_question()
         checked_question = analysis.Analysis(question)
         if checked_question.check_for_ingredient() in self.memory:
             print("IT WAS IN MEMORY")
@@ -115,5 +115,4 @@ class DialogManager:
 
 if __name__ == "__main__":
     dialog_manager = DialogManager()
-    # print(dialog_manager.intro())
     print(dialog_manager.interview())
