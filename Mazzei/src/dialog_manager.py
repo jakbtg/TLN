@@ -50,7 +50,7 @@ class DialogManager:
             return self.check_not_repeated_question(), n
         else:
             n = 2
-            return "Can you tell me an ingredient of the potion?", n
+            return self.ask_question(), n
 
     # Check if ingredient of the question is already in the memory
     def check_not_repeated_question(self):
@@ -65,6 +65,15 @@ class DialogManager:
         else:
             self.memory.append(checked_question.check_for_ingredient())
             return question
+
+    # Ask a question choosing randomly from a list of questions
+    def ask_question(self):
+        questions = [
+            "Can you tell me an ingredient of the potion?",
+            "Do you know an ingredient of the potion?",
+            "Can you name an ingredient of the potion?",
+        ]
+        return random.choice(questions)
 
     # Check if the question contains an ingredient of the target potion
     def check_if_contains_ingredient(self, question):
