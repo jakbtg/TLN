@@ -22,6 +22,7 @@ class DialogManager:
         return f"Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
 
     def interview(self):
+        print(self.intro())
         while not self.frame.check_if_complete():
             print(f"Memory: {self.memory}")
             print(f"Frame: {self.frame}")
@@ -35,6 +36,8 @@ class DialogManager:
                 )
             else:
                 self.check_other_user_answer(user_answer)
+            if self.wrong_answers == 3:
+                return self.is_failed()
             print("\n")
         return f"Congratulations! You have completed the {self.potion.get_name()}!"
 
@@ -105,8 +108,12 @@ class DialogManager:
             self.memory.append(ingredients)
             print(self.neg_answer_generator.generate_answer())
 
+    # If the user fails
+    def is_failed(self):
+        return f"You dumb student! You failed!"
+
 
 if __name__ == "__main__":
     dialog_manager = DialogManager()
-    print(dialog_manager.intro())
+    # print(dialog_manager.intro())
     print(dialog_manager.interview())
