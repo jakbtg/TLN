@@ -52,7 +52,7 @@ class Analysis:
     def check_positivity(self):
         self.positivity = True
         for token in self.doc:
-            if "Neg" in token.morph.get("Polarity"):
+            if "Neg" in token.morph.get("Polarity") or token.text == "no":
                 self.positivity = False
         return self.positivity
 
@@ -62,7 +62,7 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is powdered")
+    analysis = Analysis("no")
     print(analysis.text)
     # pprint(analysis.doc.to_json())
     # pprint(analysis.get_dependecies())
