@@ -27,16 +27,15 @@ class DialogManager:
     def interview(self):
         self.intro()
         while not self.frame.check_if_complete():
-            print(f"Memory: {self.memory}")
+            print(f"\nMemory: {self.memory}")
             print(f"Frame: {self.frame}")
             print(f"Wrong answers: {self.wrong_answers}\n")
             question, n = self.choose_question()
             print(question + "\n")
             user_answer = input()
             self.check_user_answer(user_answer, question, n)
-            if self.wrong_answers == 3:
+            if self.wrong_answers == 4:
                 return self.is_failed()
-            print("\n")
         return self.is_succeeded()
 
     # Choose random question
@@ -143,7 +142,6 @@ class DialogManager:
     def get_grade(self):
         rand = random.choice([1, 1.5, 2, 2.5, 3])
         grade = 31 - (self.wrong_answers * rand)
-        print(f"Rand is {rand}, wrong answers are {self.wrong_answers}")
         return math.floor(grade)
 
     # If the user succeeds
