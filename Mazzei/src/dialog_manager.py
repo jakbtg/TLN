@@ -19,17 +19,22 @@ class DialogManager:
         self.neg_answer_generator = nlg.NLG("negative answers")
         self.memory = []
 
+    # Print the introduction
     def intro(self):
-        return print(
+        print(
             f"Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
         )
+
+    # Print memory, frame and wrong answers -- for debugging
+    def print_helper(self):
+        print(f"\nMemory: {self.memory}")
+        print(f"Frame: {self.frame}")
+        print(f"Wrong answers: {self.wrong_answers}\n")
 
     def interview(self):
         self.intro()
         while not self.frame.check_if_complete():
-            print(f"\nMemory: {self.memory}")
-            print(f"Frame: {self.frame}")
-            print(f"Wrong answers: {self.wrong_answers}\n")
+            self.print_helper()
             question, n = self.choose_question()
             print(question + "\n")
             user_answer = input()
@@ -136,7 +141,7 @@ class DialogManager:
 
     # If the user fails
     def is_failed(self):
-        return print("You dumb student! You failed!")
+        print("You dumb student! You failed!")
 
     # Get grade
     def get_grade(self):
@@ -146,7 +151,7 @@ class DialogManager:
 
     # If the user succeeds
     def is_succeeded(self):
-        return print(
+        print(
             f"Congrats! You have completed the {self.potion.get_name()}! Your grade is {self.get_grade()}."
         )
 
