@@ -19,10 +19,12 @@ class DialogManager:
         self.memory = []
 
     def intro(self):
-        return f"Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
+        return print(
+            f"Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
+        )
 
     def interview(self):
-        print(self.intro())
+        self.intro()
         while not self.frame.check_if_complete():
             print(f"Memory: {self.memory}")
             print(f"Frame: {self.frame}")
@@ -34,7 +36,7 @@ class DialogManager:
             if self.wrong_answers == 3:
                 return self.is_failed()
             print("\n")
-        return f"Congratulations! You have completed the {self.potion.get_name()}!"
+        return print(f"Congrats! You have completed the {self.potion.get_name()}!")
 
     # Choose random question
     def choose_question(self):
@@ -125,7 +127,7 @@ class DialogManager:
 
     # If the user fails
     def is_failed(self):
-        return f"You dumb student! You failed!"
+        return print("You dumb student! You failed!")
 
 
 if __name__ == "__main__":
