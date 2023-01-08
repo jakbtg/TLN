@@ -72,8 +72,10 @@ class DialogManager:
     def ask_question(self):
         questions = [
             "Can you tell me an ingredient of the potion?",
-            "Do you know an ingredient of the potion?",
-            "Can you name an ingredient of the potion?",
+            f"Do you know an ingredient of the {self.potion.get_name()}?",
+            "Which might be an ingredient of this potion?",
+            f"Which ingredient do you think is in the {self.potion.get_name()}?",
+            "What do you need to make this potion?",
         ]
         return random.choice(questions)
 
@@ -145,15 +147,27 @@ class DialogManager:
 
     # Get grade
     def get_grade(self):
-        rand = random.choice([1, 1.5, 2, 2.5, 3])
+        rand = random.choice([2, 3, 3.8, 4.3])
         grade = 31 - (self.wrong_answers * rand)
         return math.floor(grade)
 
+    # Print comment based on grade
+    def comment(self):
+        comment = ""
+        grade = self.get_grade()
+        if grade == 31:
+            comment = "You definitely appreciate the exact art of potion making, my dear student. You possess the predisposition to become one of the best potion makers in the world.\nI am very proud of you, your grade is 30 cum laude."
+        elif grade >= 27:
+            comment = f"My student, indeed you are a great potion maker. Your potential is interesting.\nYou passed the exam with a grade of {grade}."
+        elif grade >= 21:
+            comment = f"You probably did not pay attention to the class, you still have a lot to learn. But you are not a bad student.\nYou somehow passed the exam with a grade of {grade}."
+        else:
+            comment = f"You got {grade}. Only a griffindor would reply to my questions like you did. You did pass the exam, but I don't want to waste my time with you anymore. Go away!"
+        return comment
+
     # If the user succeeds
     def is_succeeded(self):
-        print(
-            f"Congrats! You have completed the {self.potion.get_name()}! Your grade is {self.get_grade()}."
-        )
+        print(self.comment())
 
 
 if __name__ == "__main__":
