@@ -117,6 +117,9 @@ class DialogManager:
             self.wrong_answers += 1
             print(self.neg_answer_generator.generate_answer())
             return
+        if self.check_if_already_said(ingredients[0]):
+            print("It is correct, but you already said it, are you dumb?")
+            return
         if ingredients[0] in self.target_ingredients:
             self.frame.add_ingredient(ingredients)
             self.memory.append(ingredients)
@@ -126,6 +129,12 @@ class DialogManager:
             self.memory.append(ingredients)
             print(self.neg_answer_generator.generate_answer())
 
+    # Check if user already said the ingredient
+    def check_if_already_said(self, ingredient):
+        if ingredient in self.frame.get_current_ingredients():
+            return True
+        return False
+
     # If the user fails
     def is_failed(self):
         return print("You dumb student! You failed!")
@@ -134,6 +143,7 @@ class DialogManager:
     def get_grade(self):
         rand = random.choice([1, 1.5, 2, 2.5, 3])
         grade = 31 - (self.wrong_answers * rand)
+        print(f"Rand is {rand}, wrong answers are {self.wrong_answers}")
         return math.floor(grade)
 
     # If the user succeeds
