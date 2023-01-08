@@ -102,8 +102,11 @@ class DialogManager:
         analyzed_answer = analysis.Analysis(user_answer)
         is_positive_answer = analyzed_answer.check_positivity()
         if is_target_ingredient:
+            # Add target ingredient to frame both if the answer is positive or negative
+            # Because even if the user says no, when the Professor replies that the student is wrong,
+            # the student will get the piece of information that the ingredient is in the potion and +1 wrong answer
+            self.frame.add_ingredient(self.memory[-1])
             if is_positive_answer:
-                self.frame.add_ingredient(self.memory[-1])
                 print(self.pos_answer_generator.generate_answer())
             else:
                 self.wrong_answers += 1
@@ -159,7 +162,7 @@ class DialogManager:
             comment = "You definitely appreciate the exact art of potion making, my dear student. You possess the predisposition to become one of the best potion makers in the world.\nI am very proud of you, your grade is 30 cum laude."
         elif grade >= 27:
             comment = f"My student, indeed you are a great potion maker. Your potential is interesting.\nYou passed the exam with a grade of {grade}."
-        elif grade >= 21:
+        elif grade >= 22:
             comment = f"You probably did not pay attention to the class, you still have a lot to learn. But you are not a bad student.\nYou somehow passed the exam with a grade of {grade}."
         else:
             comment = f"You got {grade}. Only a griffindor would reply to my questions like you did. You did pass the exam, but I don't want to waste my time with you anymore. Go away!"
