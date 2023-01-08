@@ -30,12 +30,7 @@ class DialogManager:
             question, n = self.choose_question()
             print(question + "\n")
             user_answer = input()
-            if n == 1:
-                self.check_user_answer(
-                    user_answer, self.check_if_contains_ingredient(question)
-                )
-            else:
-                self.check_other_user_answer(user_answer)
+            self.check_user_answer(user_answer, question, n)
             if self.wrong_answers == 3:
                 return self.is_failed()
             print("\n")
@@ -84,8 +79,17 @@ class DialogManager:
         else:
             return False
 
-    # Check user answer
-    def check_user_answer(self, user_answer, is_target_ingredient):
+    # Check general user answer
+    def check_user_answer(self, user_answer, question, n):
+        if n == 1:
+            self.user_replies_ingredient(
+                user_answer, self.check_if_contains_ingredient(question)
+            )
+        else:
+            self.user_proposes_ingredient(user_answer)
+
+    # Check user answer if it is a reply to a question
+    def user_replies_ingredient(self, user_answer, is_target_ingredient):
         analyzed_answer = analysis.Analysis(user_answer)
         is_positive_answer = analyzed_answer.check_positivity()
         if is_target_ingredient:
@@ -102,8 +106,8 @@ class DialogManager:
             else:
                 print(self.pos_answer_generator.generate_answer())
 
-    # Check other user answer
-    def check_other_user_answer(self, user_answer):
+    # Check user answer if it is a proposal of an ingredient
+    def user_proposes_ingredient(self, user_answer):
         checked_answer = analysis.Analysis(user_answer)
         ingredients = checked_answer.check_for_ingredient()
         if len(ingredients) == 0:
