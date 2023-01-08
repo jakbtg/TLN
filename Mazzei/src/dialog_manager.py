@@ -5,6 +5,7 @@ import analysis
 import nlg
 import frame
 import random
+import math
 
 
 class DialogManager:
@@ -36,7 +37,7 @@ class DialogManager:
             if self.wrong_answers == 3:
                 return self.is_failed()
             print("\n")
-        return print(f"Congrats! You have completed the {self.potion.get_name()}!")
+        return self.is_succeeded()
 
     # Choose random question
     def choose_question(self):
@@ -129,7 +130,19 @@ class DialogManager:
     def is_failed(self):
         return print("You dumb student! You failed!")
 
+    # Get grade
+    def get_grade(self):
+        rand = random.choice([1, 1.5, 2, 2.5, 3])
+        grade = 31 - (self.wrong_answers * rand)
+        return math.floor(grade)
+
+    # If the user succeeds
+    def is_succeeded(self):
+        return print(
+            f"Congrats! You have completed the {self.potion.get_name()}! Your grade is {self.get_grade()}."
+        )
+
 
 if __name__ == "__main__":
     dialog_manager = DialogManager()
-    print(dialog_manager.interview())
+    dialog_manager.interview()
