@@ -5,7 +5,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_md")
 
-
+# Trying to generate a model, using spacy pos tags, that obeys sentence structure better than a naive model
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
         return ["::".join((word.orth_, word.pos_)) for word in nlp(sentence)]
@@ -17,8 +17,9 @@ class POSifiedText(markovify.Text):
 
 class NLG:
     def __init__(self, corpus):
-        self.text = self.build_text_from_corpus(corpus)
-        self.model = markovify.NewlineText(self.text)
+        # self.text = self.build_text_from_corpus(corpus)
+        # self.model = POSifiedText(self.text)
+        self.model = self.build_model_from_corpus(corpus)
         self.model.compile(inplace=True)
 
     # Choose the corpus to use
@@ -34,6 +35,22 @@ class NLG:
                 text = f.read()
         return text
 
+    # Choose the corpus to use and build the model
+    def build_model_from_corpus(self, corpus):
+        if corpus == "questions":
+            with open("Mazzei/corpus/questions.txt") as f:
+                text = f.read()
+                model = POSifiedText(text)
+        elif corpus == "positive answers":
+            with open("Mazzei/corpus/positive_answers.txt") as f:
+                text = f.read()
+                model = markovify.Text(text)
+        elif corpus == "negative answers":
+            with open("Mazzei/corpus/negative_answers.txt") as f:
+                text = f.read()
+                model = markovify.Text(text)
+        return model
+
     def generate_question(self):
         question = self.model.make_sentence(tries=100)
         test = Analysis(question)
@@ -43,7 +60,9 @@ class NLG:
             test = Analysis(question)
         if question is None:
             return self.generate_question()
-        return question
+        # changed last two characters from " ?" to "?"
+        return question[:-2] + "?"
+        # return question
 
     def generate_answer(self):
         answer = self.model.make_sentence(tries=100)
@@ -56,12 +75,12 @@ if __name__ == "__main__":
     questions_generator = NLG("questions")
     for i in range(20):
         print(questions_generator.generate_question())
-    # pos_answers_generator = NLG("positive answers")
-    # for i in range(20):
-    #     print(pos_answers_generator.generate_answer())
-    # neg_answers_generator = NLG("negative answers")
-    # for i in range(20):
-    #     print(neg_answers_generator.generate_answer())
+    pos_answers_generator = NLG("positive answers")
+    for i in range(20):
+        print(pos_answers_generator.generate_answer())
+    neg_answers_generator = NLG("negative answers")
+    for i in range(20):
+        print(neg_answers_generator.generate_answer())
 
 
 # from simplenlg import *
