@@ -31,6 +31,7 @@ class DialogManager:
         print(f"Frame: {self.frame}")
         print(f"Wrong answers: {self.wrong_answers}\n")
 
+    # This method manages the whole chat with the user
     def interview(self):
         self.intro()
         while not self.frame.check_if_complete():
@@ -57,12 +58,9 @@ class DialogManager:
     # Check if ingredient of the question is already in the memory
     def check_not_repeated_question(self):
         question = self.question_generator.generate_question()
-        # if question is None:
-        #     print("IT WAS NONE")
-        #     return self.check_not_repeated_question()
         checked_question = analysis.Analysis(question)
         if checked_question.check_for_ingredient() in self.memory:
-            print("IT WAS IN MEMORY")
+            print("IT WAS IN MEMORY")  # For debugging
             return self.check_not_repeated_question()
         else:
             self.memory.append(checked_question.check_for_ingredient())
@@ -146,7 +144,7 @@ class DialogManager:
 
     # If the user fails
     def is_failed(self):
-        print("You dumb student! You failed!")
+        print("You failed the exam and you are wasting my time. Get out of my sight!")
 
     # Get grade
     def get_grade(self):
