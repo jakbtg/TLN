@@ -1,4 +1,3 @@
-import potion
 from potions_list import *
 
 
@@ -11,7 +10,7 @@ class Frame:
         self.is_completed = False
 
     def __str__(self):
-        return f"{self.target_potion} \n\tCurrent ingredients: {', '.join(self.current_ingredients)}"
+        return f"{self.target_potion}\n\tCurrent ingredients: {', '.join(self.current_ingredients)}"
 
     def get_target_potion(self):
         return self.target_potion
@@ -40,7 +39,7 @@ class Frame:
 
     # Check if the ingredient is in the target potion ingredients ignoring the case
     # - If the ingredient is in the target potion, add it to the current ingredients
-    # - If the ingredient is not in the target potion, increase the number of wrong ingredients
+    # - If the ingredient is not in the target potion, print the wrong ingredient
     def check_casefold_and_add(self, ingredient):
         found = False
         for target_ingredient in self.target_potion.get_ingredients():
@@ -70,5 +69,4 @@ if __name__ == "__main__":
         ]
     )
     print(frame)
-    print(frame.check_if_complete())
-    # print(frame.get_target_ingredients())
+    print(f"Is completed: {frame.check_if_complete()}")

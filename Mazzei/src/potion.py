@@ -14,7 +14,10 @@ class Potion:
 
 
 if __name__ == "__main__":
-    potion = Potion("Invisibility", ["Eye of Newt", "Dragon's Blood"])
+    potion = Potion(
+        "Healing Potion",
+        ["Wormwood", "Bubotuber pus", "Dittany", "Dragon liver", "Unicorn tailhair"],
+    )
     print(potion)
     print(potion.get_name())
     print(potion.get_ingredients())

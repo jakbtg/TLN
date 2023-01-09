@@ -1,6 +1,5 @@
 import spacy
 from potions_list import ingredients_list
-from pprint import pprint
 
 
 class Analysis:
@@ -11,6 +10,7 @@ class Analysis:
 
     # Get the dependencies of the text in the form:
     # {token: (dependency, part of speech, head)}
+    # --> used to understand how to work with spacy
     def get_dependecies(self):
         dict = {}
         for token in self.doc:
@@ -56,17 +56,19 @@ class Analysis:
                 self.positivity = False
         return self.positivity
 
-    # Count number of ingredients in the text
+    # Count number of ingredients in the text --> used to check if the question is valid
     def number_of_ingredients(self):
         return len(self.check_for_ingredient())
 
 
 if __name__ == "__main__":
-    analysis = Analysis("no")
+    analysis = Analysis("There is not the dragon liver in this potion.")
     print(analysis.text)
-    # pprint(analysis.doc.to_json())
-    # pprint(analysis.get_dependecies())
+    print("\n")
+    dependencies = analysis.get_dependecies()
+    for key, value in dependencies.items():
+        print(f"{key}: {value}")
+    print("\n")
     print(f"Found ingredient: {analysis.check_for_ingredient()}")
     print(f"Positivity: {analysis.check_positivity()}")
     print(f"Number of ingredients: {analysis.number_of_ingredients()}")
-    # displacy.serve(analysis.doc, style="dep")

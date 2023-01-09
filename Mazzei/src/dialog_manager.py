@@ -25,7 +25,7 @@ class DialogManager:
             f"Professor Snape: Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
         )
 
-    # Print memory, frame and wrong answers -- for debugging
+    # Print memory, frame and wrong answers --> for debugging
     def print_helper(self):
         print(f"\nMemory: {self.memory}")
         print(f"Frame: {self.frame}")
