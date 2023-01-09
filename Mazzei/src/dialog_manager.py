@@ -22,7 +22,7 @@ class DialogManager:
     # Print the introduction
     def intro(self):
         print(
-            f"Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
+            f"Professor Snape: Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
         )
 
     # Print memory, frame and wrong answers -- for debugging
@@ -37,12 +37,16 @@ class DialogManager:
         while not self.frame.check_if_complete():
             self.print_helper()
             question, n = self.choose_question()
-            print(question + "\n")
-            user_answer = input()
+            self.print_question(question)
+            user_answer = input("Student: ")
             self.check_user_answer(user_answer, question, n)
             if self.wrong_answers == 4:
                 return self.is_failed()
         return self.is_succeeded()
+
+    # Print the choosen question
+    def print_question(self, question):
+        print(f"Professor Snape: {question}\n")
 
     # Choose random question
     def choose_question(self):
@@ -105,16 +109,16 @@ class DialogManager:
             # the student will get the piece of information that the ingredient is in the potion and +1 wrong answer
             self.frame.add_ingredient(self.memory[-1])
             if is_positive_answer:
-                print(self.pos_answer_generator.generate_answer())
+                print(f"Professor Snape: {self.pos_answer_generator.generate_answer()}")
             else:
                 self.wrong_answers += 1
-                print(self.neg_answer_generator.generate_answer())
+                print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
         else:
             if is_positive_answer:
                 self.wrong_answers += 1
-                print(self.neg_answer_generator.generate_answer())
+                print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
             else:
-                print(self.pos_answer_generator.generate_answer())
+                print(f"Professor Snape: {self.pos_answer_generator.generate_answer()}")
 
     # Check user answer if it is a proposal of an ingredient
     def user_proposes_ingredient(self, user_answer):
@@ -122,19 +126,21 @@ class DialogManager:
         ingredients = checked_answer.check_for_ingredient()
         if len(ingredients) == 0:
             self.wrong_answers += 1
-            print(self.neg_answer_generator.generate_answer())
+            print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
             return
         if self.check_if_already_said(ingredients[0]):
-            print("It is correct, but you already said it, are you dumb?")
+            print(
+                "Professor Snape: It is correct, but you already said it, are you dumb?"
+            )
             return
         if ingredients[0] in self.target_ingredients:
             self.frame.add_ingredient(ingredients)
             self.memory.append(ingredients)
-            print(self.pos_answer_generator.generate_answer())
+            print(f"Professor Snape: {self.pos_answer_generator.generate_answer()}")
         else:
             self.wrong_answers += 1
             self.memory.append(ingredients)
-            print(self.neg_answer_generator.generate_answer())
+            print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
 
     # Check if user already said the ingredient
     def check_if_already_said(self, ingredient):
@@ -144,7 +150,9 @@ class DialogManager:
 
     # If the user fails
     def is_failed(self):
-        print("You failed the exam and you are wasting my time. Get out of my sight!")
+        print(
+            "\t\t You failed the exam and you are wasting my time. Get out of my sight!"
+        )
 
     # Get grade
     def get_grade(self):
@@ -157,18 +165,18 @@ class DialogManager:
         comment = ""
         grade = self.get_grade()
         if grade == 31:
-            comment = "You definitely appreciate the exact art of potion making, my dear student. You possess the predisposition to become one of the best potion makers in the world.\nI am very proud of you, your grade is 30 cum laude."
+            comment = "You definitely appreciate the exact art of potion making, my dear student. You possess the predisposition to become one of the best potion makers in the world.\n\t\t I am very proud of you, your grade is 30 cum laude."
         elif grade >= 27:
-            comment = f"My student, indeed you are a great potion maker. Your potential is interesting.\nYou passed the exam with a grade of {grade}."
+            comment = f"My student, indeed you are a great potion maker. Your potential is interesting.\n\t\t You passed the exam with a grade of {grade}."
         elif grade >= 22:
-            comment = f"You probably did not pay attention to the class, you still have a lot to learn. But you are not a bad student.\nYou somehow passed the exam with a grade of {grade}."
+            comment = f"You probably did not pay attention to the class, you still have a lot to learn. But you are not a really bad student.\n\t\t You somehow passed the exam with a grade of {grade}."
         else:
             comment = f"You got {grade}. Only a griffindor would reply to my questions like you did. You did pass the exam, but I don't want to waste my time with you anymore. Go away!"
         return comment
 
     # If the user succeeds
     def is_succeeded(self):
-        print(self.comment())
+        print(f"\t\t {self.comment()}")
 
 
 if __name__ == "__main__":
