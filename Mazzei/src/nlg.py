@@ -1,46 +1,18 @@
 import markovify
 from analysis import Analysis
-import spacy
-
-
-nlp = spacy.load("en_core_web_md")
-
-# Trying to generate a model, using spacy pos tags, that obeys sentence structure better than a naive model
-class POSifiedText(markovify.Text):
-    def word_split(self, sentence):
-        return ["::".join((word.orth_, word.pos_)) for word in nlp(sentence)]
-
-    def word_join(self, words):
-        sentence = " ".join(word.split("::")[0] for word in words)
-        return sentence
 
 
 class NLG:
     def __init__(self, corpus):
-        # self.text = self.build_text_from_corpus(corpus)
-        # self.model = POSifiedText(self.text)
         self.model = self.build_model_from_corpus(corpus)
         self.model.compile(inplace=True)
-
-    # Choose the corpus to use
-    def build_text_from_corpus(self, corpus):
-        if corpus == "questions":
-            with open("Mazzei/corpus/questions.txt") as f:
-                text = f.read()
-        elif corpus == "positive answers":
-            with open("Mazzei/corpus/positive_answers.txt") as f:
-                text = f.read()
-        elif corpus == "negative answers":
-            with open("Mazzei/corpus/negative_answers.txt") as f:
-                text = f.read()
-        return text
 
     # Choose the corpus to use and build the model
     def build_model_from_corpus(self, corpus):
         if corpus == "questions":
             with open("Mazzei/corpus/questions.txt") as f:
                 text = f.read()
-                model = POSifiedText(text)
+                model = markovify.Text(text)
         elif corpus == "positive answers":
             with open("Mazzei/corpus/positive_answers.txt") as f:
                 text = f.read()
@@ -51,6 +23,7 @@ class NLG:
                 model = markovify.Text(text)
         return model
 
+    # Generate a random question
     def generate_question(self):
         question = self.model.make_sentence(tries=100)
         test = Analysis(question)
@@ -60,10 +33,9 @@ class NLG:
             test = Analysis(question)
         if question is None:
             return self.generate_question()
-        # changed last two characters from " ?" to "?"
-        return question[:-2] + "?"
-        # return question
+        return question
 
+    # Generate a random answer
     def generate_answer(self):
         answer = self.model.make_sentence(tries=100)
         if answer is None:
