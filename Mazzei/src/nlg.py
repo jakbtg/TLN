@@ -18,7 +18,7 @@ class POSifiedText(markovify.Text):
 class NLG:
     def __init__(self, corpus):
         self.text = self.build_text_from_corpus(corpus)
-        self.model = markovify.Text(self.text)
+        self.model = markovify.NewlineText(self.text)
         self.model.compile(inplace=True)
 
     # Choose the corpus to use
