@@ -1,12 +1,11 @@
 import spacy
 from potions_list import ingredients_list
-from fuzzywuzzy import process
 
 
 class Analysis:
     def __init__(self, text):
+        self.text = text.lower()
         self.nlp = spacy.load("en_core_web_md")
-        self.text = self.correct_text(text.lower())
         self.doc = self.nlp(self.text)
 
     # Get the dependencies of the text in the form:
@@ -61,24 +60,10 @@ class Analysis:
     def number_of_ingredients(self):
         return len(self.check_for_ingredient())
 
-    # Correct the text using fuzzywuzzy --> used to correct the user input
-    def correct_text(self, text):
-        doc = self.nlp(text)
-        words = [word for ingredient in ingredients_list for word in ingredient.split()]
-        for token in doc:
-            # print(token.text)
-            tmp = process.extractOne(token.text, words)
-            if tmp[1] > 90 and tmp[0] != token.text:
-                print(f"{token.text} --> {tmp[0]}: {tmp[1]}")
-                text = text.replace(token.text, tmp[0])
-        return text
-
 
 if __name__ == "__main__":
-    text = "You don't need any powdere comon rue"
-    print(f'Original text: "{text}"')
-    analysis = Analysis(text)
-    print(f'Corrected text: "{analysis.text}"')
+    analysis = Analysis("You don't need any lacewing flies")
+    print(analysis.text)
     print("\n")
     dependencies = analysis.get_dependecies()
     for key, value in dependencies.items():
