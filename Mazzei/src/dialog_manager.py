@@ -40,9 +40,7 @@ class DialogManager:
             # self.print_helper() # --> for testing the chatbot
             question, n = self.choose_question()
             self.print_question(question)
-            self.chatting(question, n)
-            # user_answer = input("Student: ")
-            # self.check_user_answer(user_answer, question, n)
+            self.user_interaction(question, n)
             if self.wrong_answers == 4:
                 return self.fail()
         return self.success()
@@ -93,6 +91,15 @@ class DialogManager:
             return True
         else:
             return False
+
+    # If can listen, listen to the user else take keyboard input
+    def user_interaction(self, question, n):
+        if self.can_listen:
+            user_answer = self.listen()
+            self.check_user_answer(user_answer, question, n)
+        else:
+            user_answer = input(f"Student: ")
+            self.check_user_answer(user_answer, question, n)
 
     # Check general user answer
     def check_user_answer(self, user_answer, question, n):
@@ -207,7 +214,7 @@ class DialogManager:
         self.voice_engine.say(text)
         self.voice_engine.runAndWait()
 
-    # Listen to user
+    # Listen to the user
     def listen(self):
         recognizer = Recognizer()
         with Microphone() as source:
@@ -221,16 +228,7 @@ class DialogManager:
                 print("I did not understand you")
                 return ""
 
-    # If can listen, listen to user else take keyboard input
-    def chatting(self, question, n):
-        if self.can_listen:
-            user_answer = self.listen()
-            self.check_user_answer(user_answer, question, n)
-        else:
-            user_answer = input(f"Student: ")
-            self.check_user_answer(question, question, n)
-
 
 if __name__ == "__main__":
-    dialog_manager = DialogManager(can_listen=True)
+    dialog_manager = DialogManager(can_listen=False)
     dialog_manager.interview()
