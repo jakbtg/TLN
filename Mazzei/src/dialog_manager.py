@@ -5,11 +5,11 @@ import frame
 import random
 import math
 import pyttsx3
-from SpeechRecognition import Microphone, Recognizer
+from speech_recognition import Microphone, Recognizer
 
 
 class DialogManager:
-    def __init__(self):
+    def __init__(self, can_listen):
         self.potion = random.choice(potions_list.potions)
         self.frame = frame.Frame(self.potion)
         self.target_ingredients = self.frame.get_target_ingredients()
@@ -19,6 +19,7 @@ class DialogManager:
         self.neg_answer_generator = nlg.NLG("negative answers")
         self.memory = []
         self.voice_engine = pyttsx3.init()
+        self.can_listen = can_listen
 
     # Print the introduction
     def intro(self):
@@ -39,8 +40,9 @@ class DialogManager:
             # self.print_helper() # --> for testing the chatbot
             question, n = self.choose_question()
             self.print_question(question)
-            user_answer = input("Student: ")
-            self.check_user_answer(user_answer, question, n)
+            self.chatting(question, n)
+            # user_answer = input("Student: ")
+            # self.check_user_answer(user_answer, question, n)
             if self.wrong_answers == 4:
                 return self.fail()
         return self.success()
@@ -209,18 +211,26 @@ class DialogManager:
     def listen(self):
         recognizer = Recognizer()
         with Microphone() as source:
-            print("Speak:")
-            audio = recognizer.listen(source)
+            print("...ready to listen...")
+            audio = recognizer.listen(source, timeout=5)
             try:
-                text = recognizer.recognize_google(audio)
-                print(f"You: {text}")
+                text = recognizer.recognize_google(audio, language="en-GB")
+                print(f"Student: {text}")
                 return text
             except:
-                print("Sorry, I did not get that")
+                print("I did not understand you")
                 return ""
+
+    # If can listen, listen to user else take keyboard input
+    def chatting(self, question, n):
+        if self.can_listen:
+            user_answer = self.listen()
+            self.check_user_answer(user_answer, question, n)
+        else:
+            user_answer = input(f"Student: ")
+            self.check_user_answer(question, question, n)
 
 
 if __name__ == "__main__":
-    dialog_manager = DialogManager()
-    # dialog_manager.interview()
-    dialog_manager.listen()
+    dialog_manager = DialogManager(can_listen=True)
+    dialog_manager.interview()
