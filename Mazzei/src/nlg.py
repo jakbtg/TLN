@@ -1,5 +1,19 @@
 import markovify
 from analysis import Analysis
+import spacy
+
+
+nlp = spacy.load("en_core_web_md")
+
+# Trying to generate a model, using spacy pos tags, that obeys sentence structure better than a naive model
+# The improvement is not significant, so I kept the naive model
+class POSifiedText(markovify.Text):
+    def word_split(self, sentence):
+        return ["::".join((word.orth_, word.pos_)) for word in nlp(sentence)]
+
+    def word_join(self, words):
+        sentence = " ".join(word.split("::")[0] for word in words)
+        return sentence
 
 
 class NLG:
@@ -13,6 +27,8 @@ class NLG:
             with open("Mazzei/corpus/questions.txt") as f:
                 text = f.read()
                 model = markovify.Text(text)
+                # Tried to use POSifiedText, but the improvement is not significant
+                # model = POSifiedText(text)
         elif corpus == "positive answers":
             with open("Mazzei/corpus/positive_answers.txt") as f:
                 text = f.read()
