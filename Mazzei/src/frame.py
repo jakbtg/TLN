@@ -55,8 +55,10 @@ if __name__ == "__main__":
     print(frame)
     frame.add_ingredient(["Lacewing flies", "leeches"])
     print(frame)
-    frame.add_ingredient(["Eye of Newt"])
+    # Trying to add an existing ingredient which is not in the target potion
+    frame.add_ingredient(["Dragon liver"])
     print(frame)
+    # Trying to add a fake ingredient
     frame.add_ingredient(["Wrong ingredient"])
     print(frame)
     frame.add_ingredient(
