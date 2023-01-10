@@ -1,5 +1,3 @@
-# Dialog manager for the Severus Snape chatbot
-
 import potions_list
 import analysis
 import nlg
@@ -41,8 +39,8 @@ class DialogManager:
             user_answer = input("Student: ")
             self.check_user_answer(user_answer, question, n)
             if self.wrong_answers == 4:
-                return self.is_failed()
-        return self.is_succeeded()
+                return self.fail()
+        return self.success()
 
     # Print the choosen question
     def print_question(self, question):
@@ -64,7 +62,7 @@ class DialogManager:
         question = self.question_generator.generate_question()
         checked_question = analysis.Analysis(question)
         if checked_question.check_for_ingredient() in self.memory:
-            print("IT WAS IN MEMORY")  # For debugging
+            print("IT WAS IN MEMORY")  # --> for debugging
             return self.check_not_repeated_question()
         else:
             self.memory.append(checked_question.check_for_ingredient())
@@ -149,7 +147,7 @@ class DialogManager:
         return False
 
     # If the user fails
-    def is_failed(self):
+    def fail(self):
         print(
             "\t\t You failed the exam and you are wasting my time. Get out of my sight!"
         )
@@ -175,7 +173,7 @@ class DialogManager:
         return comment
 
     # If the user succeeds
-    def is_succeeded(self):
+    def success(self):
         print(f"\t\t {self.comment()}")
 
 
