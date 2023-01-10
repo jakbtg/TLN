@@ -4,6 +4,7 @@ import nlg
 import frame
 import random
 import math
+import pyttsx3
 
 
 class DialogManager:
@@ -16,12 +17,13 @@ class DialogManager:
         self.pos_answer_generator = nlg.NLG("positive answers")
         self.neg_answer_generator = nlg.NLG("negative answers")
         self.memory = []
+        self.voice_engine = pyttsx3.init()
 
     # Print the introduction
     def intro(self):
-        print(
-            f"Professor Snape: Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
-        )
+        intro = f"Hello, I am Severus Snape, the potions master. I will ask you about the ingredients of the {self.potion.get_name()}."
+        print(f"Professor Snape: {intro}")
+        self.speak(intro)
 
     # Print memory, frame and wrong answers --> for debugging
     def print_helper(self):
@@ -44,7 +46,8 @@ class DialogManager:
 
     # Print the choosen question
     def print_question(self, question):
-        print(f"Professor Snape: {question}\n")
+        print(f"\t\t {question}\n")
+        self.speak(question)
 
     # Choose random question
     def choose_question(self):
@@ -107,16 +110,24 @@ class DialogManager:
             # the student will get the piece of information that the ingredient is in the potion and +1 wrong answer
             self.frame.add_ingredient(self.memory[-1])
             if is_positive_answer:
-                print(f"Professor Snape: {self.pos_answer_generator.generate_answer()}")
+                answer = self.pos_answer_generator.generate_answer()
+                print(f"Professor Snape: {answer}")
+                self.speak(answer)
             else:
                 self.wrong_answers += 1
-                print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
+                answer = self.neg_answer_generator.generate_answer()
+                print(f"Professor Snape: {answer}")
+                self.speak(answer)
         else:
             if is_positive_answer:
                 self.wrong_answers += 1
-                print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
+                answer = self.neg_answer_generator.generate_answer()
+                print(f"Professor Snape: {answer}")
+                self.speak(answer)
             else:
-                print(f"Professor Snape: {self.pos_answer_generator.generate_answer()}")
+                answer = self.pos_answer_generator.generate_answer()
+                print(f"Professor Snape: {answer}")
+                self.speak(answer)
 
     # Check user answer if it is a proposal of an ingredient
     def user_proposes_ingredient(self, user_answer):
@@ -124,21 +135,28 @@ class DialogManager:
         ingredients = checked_answer.check_for_ingredient()
         if len(ingredients) == 0:
             self.wrong_answers += 1
-            print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
+            answer = self.neg_answer_generator.generate_answer()
+            print(f"Professor Snape: {answer}")
+            self.speak(answer)
             return
         if self.check_if_already_said(ingredients[0]):
             print(
                 "Professor Snape: It is correct, but you already said it, are you dumb?"
             )
+            self.speak("It is correct, but you already said it, are you dumb?")
             return
         if ingredients[0] in self.target_ingredients:
             self.frame.add_ingredient(ingredients)
             self.memory.append(ingredients)
-            print(f"Professor Snape: {self.pos_answer_generator.generate_answer()}")
+            answer = self.pos_answer_generator.generate_answer()
+            print(f"Professor Snape: {answer}")
+            self.speak(answer)
         else:
             self.wrong_answers += 1
             self.memory.append(ingredients)
-            print(f"Professor Snape: {self.neg_answer_generator.generate_answer()}")
+            answer = self.neg_answer_generator.generate_answer()
+            print(f"Professor Snape: {answer}")
+            self.speak(answer)
 
     # Check if user already said the ingredient
     def check_if_already_said(self, ingredient):
@@ -148,9 +166,9 @@ class DialogManager:
 
     # If the user fails
     def fail(self):
-        print(
-            "\t\t You failed the exam and you are wasting my time. Get out of my sight!"
-        )
+        fail = "You failed the exam and you are wasting my time. Get out of my sight!"
+        print(f"\t\t {fail}")
+        self.speak(fail)
 
     # Get grade
     def get_grade(self):
@@ -174,7 +192,16 @@ class DialogManager:
 
     # If the user succeeds
     def success(self):
-        print(f"\t\t {self.comment()}")
+        comment = self.comment()
+        print(f"\t\t {comment}")
+        self.speak(comment)
+
+    # Speak
+    def speak(self, text):
+        voice_id = "com.apple.voice.compact.en-GB.Daniel"
+        self.voice_engine.setProperty("voice", voice_id)
+        self.voice_engine.say(text)
+        self.voice_engine.runAndWait()
 
 
 if __name__ == "__main__":
