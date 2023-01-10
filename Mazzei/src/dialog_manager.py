@@ -5,6 +5,7 @@ import frame
 import random
 import math
 import pyttsx3
+from SpeechRecognition import Microphone, Recognizer
 
 
 class DialogManager:
@@ -204,7 +205,22 @@ class DialogManager:
         self.voice_engine.say(text)
         self.voice_engine.runAndWait()
 
+    # Listen to user
+    def listen(self):
+        recognizer = Recognizer()
+        with Microphone() as source:
+            print("Speak:")
+            audio = recognizer.listen(source)
+            try:
+                text = recognizer.recognize_google(audio)
+                print(f"You: {text}")
+                return text
+            except:
+                print("Sorry, I did not get that")
+                return ""
+
 
 if __name__ == "__main__":
     dialog_manager = DialogManager()
-    dialog_manager.interview()
+    # dialog_manager.interview()
+    dialog_manager.listen()
