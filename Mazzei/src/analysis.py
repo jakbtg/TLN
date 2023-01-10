@@ -62,7 +62,7 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("There is not the dragon liver in this potion.")
+    analysis = Analysis("You don't need any lacewing flies")
     print(analysis.text)
     print("\n")
     dependencies = analysis.get_dependecies()
