@@ -35,7 +35,7 @@ class DialogManager:
     def interview(self):
         self.intro()
         while not self.frame.check_if_complete():
-            self.print_helper()
+            # self.print_helper() # --> for testing the chatbot
             question, n = self.choose_question()
             self.print_question(question)
             user_answer = input("Student: ")
@@ -46,7 +46,7 @@ class DialogManager:
 
     # Print the choosen question
     def print_question(self, question):
-        print(f"\t\t {question}\n")
+        print(f"\t\t {question}")
         self.speak(question)
 
     # Choose random question
@@ -65,7 +65,7 @@ class DialogManager:
         question = self.question_generator.generate_question()
         checked_question = analysis.Analysis(question)
         if checked_question.check_for_ingredient() in self.memory:
-            print("IT WAS IN MEMORY")  # --> for debugging
+            # print("IT WAS IN MEMORY")  # --> for debugging
             return self.check_not_repeated_question()
         else:
             self.memory.append(checked_question.check_for_ingredient())
