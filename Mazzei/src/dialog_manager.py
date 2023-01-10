@@ -200,6 +200,7 @@ class DialogManager:
     def speak(self, text):
         voice_id = "com.apple.voice.compact.en-GB.Daniel"
         self.voice_engine.setProperty("voice", voice_id)
+        self.voice_engine.setProperty("rate", 185)
         self.voice_engine.say(text)
         self.voice_engine.runAndWait()
 
