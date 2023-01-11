@@ -83,15 +83,6 @@ class DialogManager:
         ]
         return random.choice(questions)
 
-    # Check if the question contains an ingredient of the target potion
-    def check_if_contains_ingredient(self, question):
-        checked_question = analysis.Analysis(question)
-        ingredient = checked_question.check_for_ingredient()[0]
-        if ingredient in self.target_ingredients:
-            return True
-        else:
-            return False
-
     # If can listen, listen to the user else take keyboard input
     def user_interaction(self, question, n):
         if self.can_listen:
@@ -100,6 +91,15 @@ class DialogManager:
         else:
             user_answer = input(f"Student: ")
             self.check_user_answer(user_answer, question, n)
+
+    # Check if the question contains an ingredient of the target potion
+    def check_if_contains_ingredient(self, question):
+        checked_question = analysis.Analysis(question)
+        ingredient = checked_question.check_for_ingredient()[0]
+        if ingredient in self.target_ingredients:
+            return True
+        else:
+            return False
 
     # Check general user answer
     def check_user_answer(self, user_answer, question, n):
