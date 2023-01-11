@@ -62,13 +62,13 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("No, you don't need any lacewing flies")
+    analysis = Analysis("There is dragon liver and knotgrass in this potion.")
     print(analysis.text)
     print("\n")
     dependencies = analysis.get_dependecies()
     for key, value in dependencies.items():
         print(f"{key}: {value}")
     print("\n")
-    print(f"Found ingredient: {analysis.check_for_ingredient()}")
+    print(f"Found ingredients: {analysis.check_for_ingredient()}")
     print(f"Positivity: {analysis.check_positivity()}")
     print(f"Number of ingredients: {analysis.number_of_ingredients()}")
