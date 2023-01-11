@@ -182,7 +182,7 @@ class DialogManager:
 
     # Get grade
     def get_grade(self):
-        rand = random.choice([2, 3, 3.8, 4.3])
+        rand = random.choice([3, 3.8, 4.3])
         grade = 31 - (self.wrong_answers * rand)
         return math.floor(grade)
 
