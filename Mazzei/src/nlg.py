@@ -42,13 +42,13 @@ class NLG:
     # Generate a random question
     def generate_question(self):
         question = self.model.make_sentence(max_overlap_ratio=0.9)
+        if question is None:
+            return self.generate_question()
         test = Analysis(question)
         # Make sure the question contains only one ingredient
         while test.number_of_ingredients() >= 2 or test.number_of_ingredients() == 0:
             question = self.model.make_sentence(max_overlap_ratio=0.9)
             test = Analysis(question)
-        if question is None:
-            return self.generate_question()
         return question
 
     # Generate a random answer
