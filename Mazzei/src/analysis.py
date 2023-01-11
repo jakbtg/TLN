@@ -9,12 +9,12 @@ class Analysis:
         self.doc = self.nlp(self.text)
 
     # Get the dependencies of the text in the form:
-    # {token: (dependency, part of speech, head)}
+    # {token: (dependency, part of speech, head, morph)}
     # --> used to understand how to work with spacy
     def get_dependecies(self):
         dict = {}
         for token in self.doc:
-            dict[token.text] = token.dep_, token.pos_, token.head.text
+            dict[token.text] = token.dep_, token.pos_, token.head.text, token.morph
         return dict
 
     # Check if the text contains an ingredient
@@ -62,7 +62,7 @@ class Analysis:
 
 
 if __name__ == "__main__":
-    analysis = Analysis("You don't need any lacewing flies")
+    analysis = Analysis("No, you don't need any lacewing flies")
     print(analysis.text)
     print("\n")
     dependencies = analysis.get_dependecies()
