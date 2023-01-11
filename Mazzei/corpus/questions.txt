@@ -1,7 +1,7 @@
-Do you think Lacewing flies are in the potion?
+Do you think lacewing flies are in the potion?
 What about the leeches? Are they in the potion?
 Is there powdered bicorn horn in the potion?
-If I say that the Knotgrass is in the potion would that be correct?
+If I say that the knotgrass is in the potion would that be correct?
 Talking about the fluxweed, is it in the potion?
 Now I want to know if the shredded boomslang skin is in the potion. What will you say?
 Is there a hair in the potion?
@@ -13,13 +13,13 @@ Can the potion be made with an occamy eggshell?
 Do I need powdered common rue to make this potion?
 Would it be correct to put wormwood in this potion?
 Would it be correct to say that I need bubotuber pus to make this potion?
-Would Dittany possibly be in the potion?
+Would dittany possibly be in the potion?
 What about the dragon liver, is it in the potion?
 The unicorn tailhair is in the potion isn’t it?
-Should I put Lacewing flies in the potion?
+Should I put lacewing flies in the potion?
 Can I put the leeches in the potion?
 Do you believe that there is powdered bicorn horn in the potion?
-Can I make the potion with the Knotgrass?
+Can I make the potion with the knotgrass?
 Is the fluxweed in the potion?
 Might there be shredded boomslang skin in the potion?
 Is there a chance that there is a hair in the potion?
@@ -29,3 +29,8 @@ In order to make the potion, do I need murtlap tentacles?
 Is the tincture of thyme in the potion?
 Is it possible to make the potion with an occamy eggshell?
 Have you ever heard of powdered common rue being in the potion?
+Is it possible to put wormwood in the potion?
+Can I make the potion with bubotuber pus?
+Should I add dittany to the potion?
+Do you think the potion is made with dragon liver?
+Is it correct to add unicorn tailhair to the potion?
