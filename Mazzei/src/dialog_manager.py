@@ -54,7 +54,7 @@ class DialogManager:
     def choose_question(self):
         rand = random.randint(0, 100)
         n = 0
-        if rand < 30:
+        if rand < 40:
             n = 1
             return self.check_not_repeated_question(), n
         else:
