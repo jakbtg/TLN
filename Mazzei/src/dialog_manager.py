@@ -232,3 +232,8 @@ class DialogManager:
 if __name__ == "__main__":
     dialog_manager = DialogManager(can_listen=False)
     dialog_manager.interview()
+
+# IMPORTANTE
+# Per un corretto funzionamento del programma:
+# - Modalità con riconoscimento vocale: parlare solamente dopo che viene stampato "...ready to listen..."
+# - Modalità standard: scrivere solamente dopo che viene stampato "Student: "
