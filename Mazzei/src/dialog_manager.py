@@ -168,7 +168,7 @@ class DialogManager:
             print(f"Professor Snape: {answer}")
             self.speak(answer)
 
-    # Check if user already said the ingredient
+    # Check if the ingredient is already in the frame
     def check_if_already_said(self, ingredient):
         if ingredient in self.frame.get_current_ingredients():
             return True
