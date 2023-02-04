@@ -112,8 +112,8 @@ class DialogManager:
 
     # Check user answer if it is a reply to a question
     def user_replies_ingredient(self, user_answer, is_target_ingredient):
-        analyzed_answer = analysis.Analysis(user_answer)
-        is_positive_answer = analyzed_answer.check_positivity()
+        checked_answer = analysis.Analysis(user_answer)
+        is_positive_answer = checked_answer.check_positivity()
         if is_target_ingredient:
             # Add target ingredient to frame both if the answer is positive or negative
             # Because even if the user says no, when the Professor replies that the student is wrong,
